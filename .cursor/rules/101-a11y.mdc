@@ -1,0 +1,66 @@
+---
+description: ENFORCE accessibility standards when WRITING components to ENSURE WCAG 2.1 Level AA compliance
+globs: src/**/*.{ts,tsx}
+---
+
+# Accessibility Standards
+
+## Context
+- Applied when writing or modifying components
+- Ensures WCAG 2.1 Level AA compliance
+
+## Requirements
+- Use semantic HTML elements
+- Implement proper ARIA attributes when needed
+- Ensure proper color contrast (4.5:1 minimum)
+- Support keyboard navigation
+- Provide alt text for images
+- Implement proper focus management
+- Support screen readers
+- Handle responsive text sizing
+- Implement proper form labels
+- Support reduced motion preferences
+
+## Examples
+<example>
+// Good: Semantic HTML with proper accessibility
+export function Navigation() {
+  return (
+    <nav aria-label="Main">
+      <ul>
+        <li><a href="/" aria-current="page">Home</a></li>
+        <li><a href="/about">About</a></li>
+      </ul>
+    </nav>
+  )
+}
+
+// Good: Button with proper accessibility
+export function ToggleButton({ isPressed, ...props }) {
+  return (
+    <button
+      aria-pressed={isPressed}
+      type="button"
+      {...props}
+    >
+      {isPressed ? 'On' : 'Off'}
+    </button>
+  )
+}
+</example>
+
+<example type="invalid">
+// Bad: Non-semantic elements and missing accessibility
+export function Navigation() {
+  return (
+    <div className="nav">
+      <div onClick={() => navigate('/')}>Home</div>
+      <div onClick={() => navigate('/about')}>About</div>
+    </div>
+  )
+}
+
+// Bad: Image without alt text
+export function Logo() {
+  return <img src="/logo.png" />
+} 

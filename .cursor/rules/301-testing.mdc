@@ -1,0 +1,46 @@
+---
+description: ENFORCE testing standards when WRITING tests to ENSURE comprehensive test coverage and maintainability
+globs: src/**/*.{test,spec}.{ts,tsx}
+---
+
+# Testing Standards
+
+## Context
+- Applied when writing or modifying tests
+- Ensures comprehensive test coverage across all layers
+
+## Requirements
+- Maintain 100% test coverage for critical paths
+- Write tests that mirror user behavior
+- Use React Testing Library best practices
+- Implement E2E tests for critical user journeys
+- Test accessibility with Playwright
+- Write meaningful test descriptions
+- Follow AAA (Arrange, Act, Assert) pattern
+- Mock external dependencies appropriately
+- Test error states and edge cases
+- Include performance testing
+
+## Examples
+<example>
+// Good: Testing user behavior
+test('submits form with valid input', async () => {
+  // Arrange
+  render(<ContactForm />)
+  
+  // Act
+  await userEvent.type(screen.getByLabelText(/email/i), 'test@example.com')
+  await userEvent.click(screen.getByRole('button', { name: /submit/i }))
+  
+  // Assert
+  expect(await screen.findByText(/success/i)).toBeInTheDocument()
+})
+</example>
+
+<example type="invalid">
+// Bad: Testing implementation details
+test('updates internal state', () => {
+  const { result } = renderHook(() => useState(false))
+  act(() => result.current[1](mdc:true))
+  expect(result.current[0]).toBe(true)
+}) 

@@ -1,0 +1,53 @@
+---
+description: ENFORCE Next.js 15.1.7 and React 19 best practices when WRITING or MODIFYING code to ENSURE optimal performance and maintainability
+globs: src/**/*.{ts,tsx}
+tags: [nextjs, react, typescript, best-practices]
+priority: 1
+version: 1.0.0
+---
+
+# Next.js 15.1.7 and React 19 Standards
+
+## Context
+- Applied when writing or modifying Next.js/React code
+- Ensures consistent use of latest features and best practices
+
+## Requirements
+- Use App Router for all routing
+- Implement Server Components by default
+- Use Client Components only when necessary (interactivity/browser APIs)
+- Implement proper error boundaries and loading states
+- Follow React 19 patterns for performance
+- Use TypeScript for type safety
+- Implement proper metadata for SEO
+- Follow accessibility guidelines
+- Use proper image optimization with next/image
+- Implement proper caching strategies
+
+## Examples
+<example>
+// Good: Server Component by default
+export default function Page() {
+  return <h1>Server-side rendered</h1>
+}
+
+// Good: Client Component when needed
+'use client'
+export default function InteractiveComponent() {
+  const [count, setCount] = useState(0)
+  return <button onClick={() => setCount(count + 1)}>{count}</button>
+}
+</example>
+
+<example type="invalid">
+// Bad: Unnecessary Client Component
+'use client'
+export default function StaticContent() {
+  return <h1>Static content that could be server-rendered</h1>
+}
+
+// Bad: Missing error boundary
+export default function Page() {
+  return <ComponentThatMightError />
+}
+</example> 

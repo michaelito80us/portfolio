@@ -1,0 +1,61 @@
+---
+description: ENFORCE core principles when WRITING or MODIFYING code to ENSURE high-quality maintainable codebase
+globs: src/**/*.{ts,tsx},
+---
+ ---
+description: ENFORCE core principles when WRITING or MODIFYING code to ENSURE high-quality maintainable codebase
+globs: src/**/*.{ts,tsx}
+tags: [core, principles, best-practices]
+priority: 1
+version: 1.0.0
+---
+
+# Core Principles
+
+## Context
+- Applied when writing new code or modifying existing code
+- Fundamental principles that guide all development decisions
+
+## Requirements
+- Follow Single Responsibility Principle (SRP)
+- Write pure functions when possible
+- Maintain separation of concerns
+- Keep code DRY but pragmatic
+- Prioritize readability over cleverness
+- Design for extensibility
+- Document assumptions and edge cases
+- Maintain consistent naming conventions
+- Emphasize modular design and testability
+
+## Examples
+<example>
+// Good: Single Responsibility
+const calculateTotalPrice = (items: CartItem[]): number => {
+  return items.reduce((total, item) => total + item.price * item.quantity, 0);
+};
+
+// Good: Pure Function
+const formatCurrency = (amount: number): string => {
+  return new Intl.NumberFormat('en-US', { 
+    style: 'currency', 
+    currency: 'USD' 
+  }).format(amount);
+};
+</example>
+
+<example type="invalid">
+// Bad: Multiple Responsibilities
+const handleCheckout = (items: CartItem[]) => {
+  const total = items.reduce((sum, item) => sum + item.price * item.quantity, 0);
+  updateDatabase(items);
+  sendEmailConfirmation();
+  updateUI();
+};
+
+// Bad: Impure Function with Side Effects
+let globalTotal = 0;
+const addToTotal = (amount: number) => {
+  globalTotal += amount;
+  updateUIDisplay();
+};
+</example>
