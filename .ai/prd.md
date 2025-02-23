@@ -1,6 +1,6 @@
 # Product Requirements Document (PRD) for Professional Portfolio Website
 
-## Status: Draft
+## Status: Approved
 
 ## 1. Introduction
 

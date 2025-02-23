@@ -1,6 +1,6 @@
 # Architecture for Professional Portfolio Website
 
-## Status: Draft
+## Status: Approved
 
 ## Technical Summary
 
