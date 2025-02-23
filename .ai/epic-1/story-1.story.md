@@ -11,8 +11,8 @@ Initialize the project with the core technology stack and essential configuratio
 ## Tasks
 
 1. [x] Initialize Next.js 15.1.7 project with TypeScript
-2. [ ] Configure Tailwind CSS 4
-3. [ ] Set up ESLint and Prettier
+2. [x] Configure Tailwind CSS 4
+3. [x] Set up ESLint and Prettier
 4. [ ] Initialize Git repository with .gitignore
 5. [ ] Create basic project structure according to architecture
 6. [ ] Add README.md with setup instructions
@@ -41,12 +41,32 @@ Initialize the project with the core technology stack and essential configuratio
 ## Implementation Notes
 
 1. Next.js Initialization:
+
    - Created with Next.js 15.1.7
    - TypeScript enabled with strict mode
    - App Router architecture
    - Source directory enabled
-   - Import alias "@/*" configured
+   - Import alias "@/\*" configured
    - Initial build successful
+
+2. Configure Tailwind CSS 4:
+   - Uninstalled old Tailwind packages
+   - Installed new packages: `tailwindcss`, `@tailwindcss/postcss`, `postcss`
+   - Updated PostCSS config to use `@tailwindcss/postcss`
+   - Updated globals.css to use `@import "tailwindcss"`
+   - Removed old Tailwind directives
+   - Committed changes with message "feat: migrate to Tailwind CSS v4"
+
+3. Set up ESLint and Prettier:
+   - Installed ESLint and Prettier packages
+   - Created `.prettierrc.json` with standard configuration
+   - Updated ESLint config to integrate with Prettier and TypeScript
+   - Added npm scripts for linting and formatting:
+     - `npm run lint`: Check for linting issues
+     - `npm run lint:fix`: Fix linting issues
+     - `npm run format`: Format all files
+     - `npm run format:check`: Check formatting
+   - Fixed all existing linting and formatting issues
 
 ## Commands Run
 
