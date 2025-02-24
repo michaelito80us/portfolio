@@ -8,23 +8,23 @@ This architecture defines a modern, performant, and accessible portfolio website
 
 ## Technology Table
 
-| Technology | Description |
-|------------|-------------|
-| Next.js 15.1.7 | Latest React framework with App Router, React 19 support, and improved error debugging |
-| React 19 | Latest stable React version with sibling pre-warming and enhanced performance |
-| TypeScript | Type-safe JavaScript superset for improved developer experience |
-| Tailwind CSS 4 | Latest CSS-first framework with high-performance engine and modern CSS features |
-| Contentful | Headless CMS for content management |
-| Jest & React Testing Library | Testing frameworks for unit and integration tests |
-| Playwright | End-to-end testing, accessibility testing, and visual regression testing |
-| GitHub Actions | CI/CD pipeline automation |
-| Vercel | Hosting and deployment platform |
-| i18next | Internationalization framework |
-| Web Vitals | Performance monitoring |
-| Three.js | 3D graphics and animations |
-| Storybook | Component documentation and testing |
-| Lighthouse CI | Automated performance and accessibility testing |
-| Bundle Analyzer | Webpack bundle size analysis |
+| Technology                   | Description                                                                            |
+| ---------------------------- | -------------------------------------------------------------------------------------- |
+| Next.js 15.1.7               | Latest React framework with App Router, React 19 support, and improved error debugging |
+| React 19                     | Latest stable React version with sibling pre-warming and enhanced performance          |
+| TypeScript                   | Type-safe JavaScript superset for improved developer experience                        |
+| Tailwind CSS 4               | Latest CSS-first framework with high-performance engine and modern CSS features        |
+| Contentful                   | Headless CMS for content management                                                    |
+| Jest & React Testing Library | Testing frameworks for unit and integration tests                                      |
+| Playwright                   | End-to-end testing, accessibility testing, and visual regression testing               |
+| GitHub Actions               | CI/CD pipeline automation                                                              |
+| Vercel                       | Hosting and deployment platform                                                        |
+| i18next                      | Internationalization framework                                                         |
+| Web Vitals                   | Performance monitoring                                                                 |
+| Three.js                     | 3D graphics and animations                                                             |
+| Storybook                    | Component documentation and testing                                                    |
+| Lighthouse CI                | Automated performance and accessibility testing                                        |
+| Bundle Analyzer              | Webpack bundle size analysis                                                           |
 
 ## Architectural Diagrams
 
@@ -40,7 +40,7 @@ graph TD
     I[Lighthouse CI] -->|Report| H
     J[Bundle Analyzer] -->|Report| H
     K[Web Vitals] -->|Monitor| B
-    
+
     style A fill:#f9f,stroke:#333
     style B fill:#bbf,stroke:#333
     style C fill:#bfb,stroke:#333
@@ -61,7 +61,7 @@ sequenceDiagram
     C->>N: Return Content
     N->>K: Cache Content
     N->>U: Render Page
-    
+
     Note over T,CI: CI/CD Pipeline
     T->>CI: Run Tests
     CI->>CI: Run Lighthouse

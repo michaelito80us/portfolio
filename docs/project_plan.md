@@ -156,6 +156,7 @@ jobs:
      - Lighthouse scores: Use the Lighthouse CI output.
      - Web Vitals: Use the `useReportWebVitals` hook from Next.js.
 3. Use a library like React Draggable to implement the draggable functionality.
+
    - Example:
 
    ```jsx
@@ -165,28 +166,29 @@ jobs:
      <Draggable>
        <div className="metrics-widget">
          <h4>Metrics</h4>
-       <p>Test Coverage: {coverage}%</p>
-       <p>Bundle Size: {bundleSize} KB</p>
-       <p>Lighthouse Scores:</p>
-       <ul>
-         <li>Performance: {lighthouseScores.performance}</li>
-         <li>Accessibility: {lighthouseScores.accessibility}</li>
-         <li>SEO: {lighthouseScores.seo}</li>
-         <li>Best Practices: {lighthouseScores.bestPractices}</li>
-       </ul>
-       <p>Web Vitals:</p>
-       <ul>
-         <li>LCP: {webVitals.LCP}</li>
-         <li>TBT: {webVitals.TBT}</li>
-         <li>CLS: {webVitals.CLS}</li>
-         <li>FID: {webVitals.FID}</li>
-       </ul>
-     </div>
+         <p>Test Coverage: {coverage}%</p>
+         <p>Bundle Size: {bundleSize} KB</p>
+         <p>Lighthouse Scores:</p>
+         <ul>
+           <li>Performance: {lighthouseScores.performance}</li>
+           <li>Accessibility: {lighthouseScores.accessibility}</li>
+           <li>SEO: {lighthouseScores.seo}</li>
+           <li>Best Practices: {lighthouseScores.bestPractices}</li>
+         </ul>
+         <p>Web Vitals:</p>
+         <ul>
+           <li>LCP: {webVitals.LCP}</li>
+           <li>TBT: {webVitals.TBT}</li>
+           <li>CLS: {webVitals.CLS}</li>
+           <li>FID: {webVitals.FID}</li>
+         </ul>
+       </div>
      </Draggable>
    );
    ```
 
 4. Implement snapping to predefined anchor points.
+
    - Use logic to detect when the widget is dragged near an anchor and snap it into place.
    - Define anchor points on the page (e.g., top-left, top-right, bottom-left, bottom-right).
    - Example:
@@ -199,21 +201,22 @@ jobs:
      { x: window.innerWidth - 200, y: window.innerHeight - 200 }, // Bottom-right
    ];
 
-   const snapToAnchor = (position) => {
+   const snapToAnchor = position => {
      const threshold = 50; // Snap threshold in pixels
      for (const anchor of anchors) {
-     if (
-       Math.abs(position.x - anchor.x) < threshold &&
-       Math.abs(position.y - anchor.y) < threshold
-     ) {
-       return anchor; // Snap to this anchor
+       if (
+         Math.abs(position.x - anchor.x) < threshold &&
+         Math.abs(position.y - anchor.y) < threshold
+       ) {
+         return anchor; // Snap to this anchor
+       }
      }
-   }
-      return position; // No snapping
+     return position; // No snapping
    };
    ```
 
 5. Save and retrieve the widget’s position using localStorage.
+
    - On page load, retrieve the saved position and set the widget’s initial position.
    - Example:
 
@@ -237,6 +240,7 @@ jobs:
    ```
 
 6. Ensure the widget is responsive and works well on all screen sizes.
+
    - Example:
 
    ```javascript
@@ -250,6 +254,7 @@ jobs:
    ```
 
 7. Add animations when the widget snaps to an anchor or is minimized/expanded, accessibility features, and styling.
+
    - Example:
 
    ```css
@@ -273,6 +278,7 @@ jobs:
    ```
 
 8. Add minimization and expansion functionality.
+
    - Example:
 
    ```jsx
@@ -280,6 +286,7 @@ jobs:
    ```
 
 9. Ensure the widget is keyboard-navigable and screen-reader friendly.
+
    - Example:
 
    ```jsx
@@ -303,7 +310,7 @@ jobs:
            <li>CLS: {webVitals.CLS}</li>
            <li>FID: {webVitals.FID}</li>
          </ul>
-      </div> 
+       </div>
      </Draggable>
    );
    ```
@@ -311,6 +318,7 @@ jobs:
 ### Phase 4: Testing Implementation
 
 1. Write unit tests for individual components and functions.
+
    - Example:
 
    ```jsx
@@ -318,12 +326,19 @@ jobs:
    import MetricsWidget from './MetricsWidget';
 
    test('renders metrics widget', () => {
-     render(<MetricsWidget coverage={85} bundleSize={250} lighthouseScores={{ performance: 95, accessibility: 100, seo: 90, bestPractices: 95 }} />);
+     render(
+       <MetricsWidget
+         coverage={85}
+         bundleSize={250}
+         lighthouseScores={{ performance: 95, accessibility: 100, seo: 90, bestPractices: 95 }}
+       />
+     );
      expect(screen.getByText(/Test Coverage: 85%/)).toBeInTheDocument();
    });
    ```
 
 2. Write integration tests for interactions between components.
+
    - Example:
 
    ```jsx
@@ -335,6 +350,7 @@ jobs:
    ```
 
 3. Write end-to-end (e2e) tests for user flows using Playwright.
+
    - Example:
 
    ```javascript

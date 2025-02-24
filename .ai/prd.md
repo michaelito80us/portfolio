@@ -9,6 +9,7 @@ This PRD outlines the implementation of a modern, professional portfolio website
 ### Target Users
 
 1. **Primary**
+
    - Technical recruiters and hiring managers
    - Potential clients seeking development services
    - Fellow developers interested in technical implementations
@@ -30,16 +31,19 @@ This PRD outlines the implementation of a modern, professional portfolio website
 Each goal is associated with specific, measurable KPIs:
 
 1. Create a visually appealing and professional portfolio website
+
    - User engagement: Average session duration > 3 minutes
    - Bounce rate < 40%
    - Return visitor rate > 25%
 
 2. Showcase technical expertise through implementation of advanced features
+
    - Feature adoption rate > 60% (dark mode, language switching)
    - Interactive element engagement > 40%
    - Average time spent on project cases > 2 minutes
 
 3. Achieve perfect Lighthouse scores
+
    - Performance score > 95
    - Accessibility score > 95
    - Best Practices score > 95
@@ -48,12 +52,14 @@ Each goal is associated with specific, measurable KPIs:
    - Time to Interactive < 2.0s
 
 4. Demonstrate modern web development best practices
+
    - Code coverage > 90%
    - Zero critical security vulnerabilities
    - Zero accessibility violations
    - Successful CI/CD builds > 95%
 
 5. Create a maintainable and well-documented codebase
+
    - Documentation coverage > 90%
    - Component reuse rate > 70%
    - Code maintainability index > 85
@@ -68,11 +74,13 @@ Each goal is associated with specific, measurable KPIs:
 ### Functional Requirements
 
 - Homepage with interactive 3D elements and animations
+
   - Three.js powered interactive background
   - GSAP animations for smooth transitions
   - Performance-optimized 3D rendering
 
 - Technical Showcase Components
+
   - Performance and accessibility widget (movable, real-time metrics)
   - Interactive code snippets with syntax highlighting
   - Live demo integrations
@@ -80,6 +88,7 @@ Each goal is associated with specific, measurable KPIs:
   - Real-time performance metrics display
 
 - Projects Section
+
   - Dynamic content loading with SSR/ISR capabilities
   - Interactive case studies with technical deep-dives
   - Live demo environments
@@ -87,11 +96,13 @@ Each goal is associated with specific, measurable KPIs:
   - GitHub integration for live repository stats
 
 - Advanced Features Showcase
+
   - Basic multi-language support (i18n)
   - Theme system with custom color scheme generation
   - Real-time data updates via Supabase subscriptions
 
 - Developer Experience Features
+
   - Component playground (Storybook)
   - Performance monitoring dashboard
   - Accessibility testing suite
@@ -107,6 +118,7 @@ Each goal is associated with specific, measurable KPIs:
 ### Widget Implementation Details
 
 1. **Core Functionality**
+
    - Draggable interface with smooth movement
    - Position snapping to screen corners
    - Position persistence across sessions
@@ -135,6 +147,7 @@ Each goal is associated with specific, measurable KPIs:
    ```
 
 3. **Widget Features**
+
    - Minimize/Expand functionality
    - Real-time metric updates
    - Custom animations for state changes
@@ -155,9 +168,11 @@ Each goal is associated with specific, measurable KPIs:
          bounds="parent"
          handle=".widget-handle"
        >
-         <div className={cn('metrics-widget', { minimized: isMinimized })}
-              role="region"
-              aria-label="Performance Metrics">
+         <div
+           className={cn('metrics-widget', { minimized: isMinimized })}
+           role="region"
+           aria-label="Performance Metrics"
+         >
            {/* Widget content */}
          </div>
        </Draggable>
@@ -168,18 +183,21 @@ Each goal is associated with specific, measurable KPIs:
 ### Deployment Strategy
 
 1. **Environment Setup**
+
    - Development environment
    - Staging environment
    - Production environment
    - Environment-specific configurations
 
 2. **Deployment Process**
+
    - Vercel deployment configuration
    - Custom domain setup
    - SSL/TLS configuration
    - CDN configuration
 
 3. **Post-Deployment**
+
    - Automated smoke tests
    - Manual verification checklist
    - DNS propagation verification
@@ -194,18 +212,21 @@ Each goal is associated with specific, measurable KPIs:
 ### Project Timeline
 
 1. **Week 1-2: Setup & Infrastructure**
+
    - Project initialization
    - Development environment setup
    - CI/CD pipeline configuration
    - Basic component structure
 
 2. **Week 3-4: Core Features**
+
    - Homepage implementation
    - Project showcase development
    - Basic animations
    - Metrics widget development
 
 3. **Week 5-6: Advanced Features**
+
    - Technical showcases
    - Testing implementation
    - Performance optimization
@@ -220,18 +241,21 @@ Each goal is associated with specific, measurable KPIs:
 ### Tools & Versions
 
 1. **Core Technologies**
+
    - Next.js 15.1.7
    - React 19
    - TypeScript 5.4
    - Node.js 20.x LTS
 
 2. **UI & Styling**
+
    - Tailwind CSS 4
    - GSAP 3.12
    - Three.js 0.160.0
    - Framer Motion 11.x
 
 3. **Testing & Quality**
+
    - Jest 29.x
    - React Testing Library 14.x
    - Playwright 1.41
@@ -239,6 +263,7 @@ Each goal is associated with specific, measurable KPIs:
    - Prettier 3.x
 
 4. **Infrastructure (Free Tiers)**
+
    - Vercel (Hobby)
      - 100GB Bandwidth/month
      - Automatic HTTPS
@@ -270,6 +295,7 @@ Each goal is associated with specific, measurable KPIs:
 ### Compliance Requirements
 
 1. **Accessibility**
+
    - WCAG 2.1 Level AA compliance
    - ARIA landmarks and roles implementation
    - Keyboard navigation support
@@ -277,6 +303,7 @@ Each goal is associated with specific, measurable KPIs:
    - Color contrast ratios meeting WCAG standards
 
 2. **Privacy & Data**
+
    - GDPR compliance for contact form
    - Cookie consent implementation
    - Privacy policy documentation
@@ -284,6 +311,7 @@ Each goal is associated with specific, measurable KPIs:
    - Secure data transmission (HTTPS)
 
 3. **Performance**
+
    - Core Web Vitals compliance
    - Mobile-first responsive design
    - Progressive enhancement
@@ -299,6 +327,7 @@ Each goal is associated with specific, measurable KPIs:
 ### Cost Optimization Strategy
 
 1. **Infrastructure**
+
    - Vercel hosting (free tier)
    - GitHub free tier for repository and Actions
    - Cloudflare for CDN and DNS (free tier)
@@ -316,6 +345,7 @@ Each goal is associated with specific, measurable KPIs:
      - Content versioning
 
 2. **Development Tools**
+
    - Open-source packages and libraries
    - Supabase client SDK
    - Contentful SDK and CLI
@@ -443,7 +473,7 @@ graph TD
     S5 --> S7[Story-7: Core Features]
     S6 --> S8[Story-8: Interactive Elements]
     S7 --> S9[Story-9: Content Integration]
-    
+
     style S1 fill:#f9f,stroke:#333
     style S5 fill:#bbf,stroke:#333
     style S6 fill:#bfb,stroke:#333
@@ -552,6 +582,7 @@ Story-9: Advanced Features
 ### Analytics Setup
 
 1. **Cost-Effective Analytics Stack**
+
    - Vercel Analytics (included in free tier)
    - Custom analytics with Supabase (free tier includes):
      - Database: 500MB
@@ -592,6 +623,7 @@ Story-9: Advanced Features
 ### Technical Implementation Highlights
 
 1. **Frontend Excellence**
+
    - Next.js 15.1.7 with React 19 features showcase
    - Advanced CSS features (container queries, P3 colors)
    - Custom hooks and utilities showcase
@@ -599,12 +631,14 @@ Story-9: Advanced Features
    - Advanced animation patterns
 
 2. **State Management**
+
    - Server and client state separation
    - Real-time subscriptions
    - Optimistic updates
    - Cache management strategies
 
 3. **Testing Approach**
+
    - Unit tests (Jest + RTL)
    - Integration tests
    - E2E tests (Playwright)
@@ -635,7 +669,7 @@ Story-9: Advanced Features
            accessibility: 100
          }
        };
-       
+
        render(<MetricsWidget metrics={metrics} />);
        expect(screen.getByText('95%')).toBeInTheDocument();
      });
@@ -675,15 +709,15 @@ Story-9: Advanced Features
    ```typescript
    test('complete portfolio navigation', async ({ page }) => {
      await page.goto('/');
-     
+
      // Test navigation
      await page.click('nav >> text=Projects');
      await expect(page).toHaveURL('/projects');
-     
+
      // Test interactions
      await page.click('.project-card:first-child');
      await expect(page.locator('.project-details')).toBeVisible();
-     
+
      // Test responsive behavior
      await page.setViewportSize({ width: 375, height: 667 });
      await expect(page.locator('.mobile-menu')).toBeVisible();
@@ -694,13 +728,13 @@ Story-9: Advanced Features
 
    ```yaml
    name: Test & Deploy
-   
+
    on:
      push:
        branches: [main]
      pull_request:
        branches: [main]
-   
+
    jobs:
      test:
        runs-on: ubuntu-latest
@@ -710,25 +744,25 @@ Story-9: Advanced Features
            with:
              node-version: 20
              cache: 'npm'
-         
+
          - name: Install dependencies
            run: npm ci
-         
+
          - name: Lint
            run: npm run lint
-         
+
          - name: Type check
            run: npm run type-check
-         
+
          - name: Unit & Integration tests
            run: npm run test -- --coverage
-         
+
          - name: E2E tests
            run: npm run test:e2e
-         
+
          - name: Upload coverage
            uses: codecov/codecov-action@v3
-   
+
      performance:
        needs: test
        runs-on: ubuntu-latest
@@ -750,14 +784,17 @@ Story-9: Advanced Features
        },
        "assert": {
          "assertions": {
-           "first-contentful-paint": ["warn", {"minScore": 0.9}],
-           "interactive": ["error", {"minScore": 0.9}],
-           "performance-budget": ["error", {
-             "budget": {
-               "javascript": "200KB",
-               "total": "500KB"
+           "first-contentful-paint": ["warn", { "minScore": 0.9 }],
+           "interactive": ["error", { "minScore": 0.9 }],
+           "performance-budget": [
+             "error",
+             {
+               "budget": {
+                 "javascript": "200KB",
+                 "total": "500KB"
+               }
              }
-           }]
+           ]
          }
        }
      }
@@ -771,13 +808,13 @@ Story-9: Advanced Features
      // Homepage
      await page.goto('/');
      await expect(page).toHaveScreenshot('homepage.png', {
-       threshold: 0.1
+       threshold: 0.1,
      });
 
      // Dark mode
      await page.click('[data-testid="theme-toggle"]');
      await expect(page).toHaveScreenshot('homepage-dark.png', {
-       threshold: 0.1
+       threshold: 0.1,
      });
    });
    ```
