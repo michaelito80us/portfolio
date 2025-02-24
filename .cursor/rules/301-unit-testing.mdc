@@ -1,1 +1,102 @@
- 
+---
+description: ENFORCE unit testing standards when WRITING tests to ENSURE maintainable and effective test coverage
+globs: src/**/*.{test,spec}.{ts,tsx}
+---
+ ---
+description: ENFORCE unit testing standards when WRITING tests to ENSURE maintainable and effective test coverage
+globs: src/**/*.{test,spec}.{ts,tsx}
+tags: [testing, unit-tests, jest, react-testing-library]
+priority: 1
+version: 1.0.0
+---
+
+# Unit Testing Standards
+
+## Context
+- Applied when writing unit tests for components, functions, or modules
+- Ensures consistent test organization and maintainability
+- Promotes test-driven development practices
+
+## Requirements
+
+### Test File Location
+- Place test files as close as possible to the unit being tested in the file tree
+- Use the same directory as the tested unit
+- Name test files with `.test.ts` or `.test.tsx` suffix
+- Mirror the source file structure in `__tests__` directories only when absolutely necessary
+
+### Test Structure
+- Follow the Arrange-Act-Assert pattern
+- Group related tests using `describe` blocks
+- Use clear, descriptive test names that explain the expected behavior
+- Keep tests focused and atomic
+- Mock external dependencies appropriately
+- Test succes, error and edge cases
+- Utilize `beforeEach`, `afterEach`, `beforeAll`, and `afterAll` hooks to set up and tear down test environments efficiently.
+- Focus on testing the behavior and functionality of the components and functions rather than implementation details.
+
+
+
+### Coverage Requirements
+- Maintain minimum 80% coverage for critical business logic
+- Test all exported functions and components
+- Include edge cases and error conditions
+- Test accessibility requirements for UI components
+
+## Examples
+
+<example>
+// Good: Test file location and structure
+// src/components/Button/Button.tsx
+export const Button = ({ children, onClick }) => { /* ... */ };
+
+// src/components/Button/Button.test.tsx
+import { Button } from './Button';
+
+describe('Button', () => {
+  it('renders children correctly', () => {
+    render(<Button>Click me</Button>);
+    expect(screen.getByText('Click me')).toBeInTheDocument();
+  });
+
+  it('handles click events', () => {
+    const onClick = jest.fn();
+    render(<Button onClick={onClick}>Click me</Button>);
+    userEvent.click(screen.getByText('Click me'));
+    expect(onClick).toHaveBeenCalled();
+  });
+});
+</example>
+
+<example type="invalid">
+// Bad: Test file far from source
+// src/components/Button.tsx
+export const Button = ({ children, onClick }) => { /* ... */ };
+
+// tests/components/buttons/Button.test.tsx
+import { Button } from '../../../src/components/Button';
+
+// Bad: Unclear test description
+test('button works', () => {
+  render(<Button>Click me</Button>);
+  expect(screen.getByRole('button')).toBeTruthy();
+});
+</example>
+
+## File Organization
+
+```
+src/
+  components/
+    Button/
+      Button.tsx
+      Button.test.tsx      # ✅ Preferred: Test next to component
+      Button.styles.ts
+    Card/
+      __tests__/          # ⚠️ Only if absolutely necessary
+        Card.test.tsx
+      Card.tsx
+  utils/
+    format.ts
+    format.test.ts        # ✅ Test next to utility
+```
