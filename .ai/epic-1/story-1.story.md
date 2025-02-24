@@ -17,7 +17,7 @@ Initialize the project with the core technology stack and essential configuratio
 5. [x] Create basic project structure according to architecture
 6. [x] Add README.md with setup instructions
 7. [x] Configure basic GitHub Actions workflow
-8. [ ] Set up Jest and React Testing Library
+8. [x] Set up Jest and React Testing Library
 9. [ ] Add Playwright for E2E testing
 
 ## Acceptance Criteria
@@ -113,6 +113,16 @@ Initialize the project with the core technology stack and essential configuratio
      - Test results and coverage artifacts upload
    - Verified all required npm scripts exist in package.json
    - Committed changes with message "ci: add GitHub Actions workflow"
+
+8. Set up Jest and React Testing Library:
+   - Created jest.config.ts with Next.js and TypeScript support
+   - Added jest.setup.ts with React Testing Library configuration
+   - Configured common mocks for Next.js router and Image component
+   - Added sample test to verify setup
+   - Set initial coverage thresholds to 30%
+   - Installed ts-node for TypeScript configuration support
+   - Verified tests run successfully
+   - Committed changes with message "test: set up Jest and React Testing Library"
 
 ## Commands Run
 
