@@ -1,0 +1,84 @@
+---
+description: ENFORCE Git workflow standards when CREATING or MODIFYING code to ENSURE consistent version control
+globs: **/*
+---
+ ---
+description: ENFORCE Git workflow standards when CREATING or MODIFYING code to ENSURE consistent version control
+globs: **/*
+tags: [git, workflow, branching, commits]
+priority: 1
+version: 1.0.0
+---
+
+# Git Workflow Standards
+
+## Context
+- Applied when making any code changes
+- Applied when creating new features or fixes
+- Applied when managing branches and commits
+
+## Requirements
+
+### Branch Strategy
+- `main` - Production branch, protected
+- `develop` - Development branch, protected
+- Feature branches: `feature/{feature-name}`
+- Bug fixes: `fix/{bug-description}`
+- Releases: `release/v{version}`
+
+### Branch Creation
+- Create feature branches from `develop`
+- Name branches according to type and description
+- Delete branches after merging
+
+### Commit Standards
+- Use conventional commits format:
+  - `feat:` for new features
+  - `fix:` for bug fixes
+  - `docs:` for documentation
+  - `test:` for test additions/modifications
+  - `refactor:` for code refactoring
+  - `style:` for formatting changes
+  - `chore:` for maintenance tasks
+
+### Workflow Steps
+1. Create branch from `develop`
+2. Make changes following commit standards
+3. Push changes regularly
+4. Create PR against `develop`
+5. Merge only when approved
+6. Delete branch after merge
+
+<critical>
+- ALWAYS create appropriate branch before starting work
+- NEVER commit directly to protected branches
+- ALWAYS use conventional commit messages
+</critical>
+
+## Examples
+
+<example>
+# Good branch names
+feature/user-authentication
+fix/login-validation
+release/v1.2.0
+
+# Good commit messages
+feat: add user authentication system
+fix: correct email validation regex
+docs: update API documentation
+test: add unit tests for auth module
+</example>
+
+<example type="invalid">
+# Bad branch names
+new-feature
+bugfix
+my-branch
+
+# Bad commit messages
+added stuff
+fixed bug
+updated code
+WIP
+</example>
