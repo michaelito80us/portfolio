@@ -2,7 +2,6 @@
 description: ENFORCE accessibility standards when WRITING components to ENSURE WCAG 2.1 Level AA compliance
 globs: src/**/*.{ts,tsx}
 ---
-
 # Accessibility Standards
 
 ## Context

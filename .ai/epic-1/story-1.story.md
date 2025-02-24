@@ -1,6 +1,6 @@
 # Story 1: Project Initialization
 
-## Status: in_progress
+## Status: complete
 
 ## Epic: Setup & Infrastructure (Week 1-2)
 
@@ -18,7 +18,7 @@ Initialize the project with the core technology stack and essential configuratio
 6. [x] Add README.md with setup instructions
 7. [x] Configure basic GitHub Actions workflow
 8. [x] Set up Jest and React Testing Library
-9. [ ] Add Playwright for E2E testing
+9. [x] Add Playwright for E2E testing
 
 ## Acceptance Criteria
 
@@ -124,6 +124,23 @@ Initialize the project with the core technology stack and essential configuratio
    - Verified tests run successfully
    - Committed changes with message "test: set up Jest and React Testing Library"
 
+9. Set up Playwright for E2E Testing:
+   - Installed @playwright/test with legacy peer deps for React 19 compatibility
+   - Created playwright.config.ts with:
+     - Test directory configuration
+     - Browser projects (Chrome, Firefox, Safari, Mobile)
+     - CI/CD settings
+     - Screenshot and trace settings
+   - Added E2E test scripts to package.json:
+     - test:e2e: Run all tests
+     - test:e2e:ui: Run tests with UI mode
+     - test:e2e:debug: Run tests in debug mode
+   - Created smoke test suite with:
+     - Basic page load test
+     - Accessibility landmark tests
+   - Installed browser binaries
+   - Committed changes with message "test: add Playwright E2E testing setup"
+
 ## Commands Run
 
 ```bash
@@ -135,6 +152,10 @@ npx create-next-app@15.1.7 . --ts --tailwind --eslint --app --src-dir --import-a
 
 # Clean install and build verification
 rm -rf node_modules && rm -rf .next && npm install && npm run build
+
+# Install Playwright
+npm install -D @playwright/test --legacy-peer-deps
+npx playwright install
 ```
 
 ## Test Coverage Requirements

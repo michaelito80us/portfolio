@@ -2,7 +2,6 @@
 description: ENFORCE testing standards when WRITING tests to ENSURE comprehensive test coverage and maintainability
 globs: src/**/*.{test,spec}.{ts,tsx}
 ---
-
 # Testing Standards
 
 ## Context
@@ -18,8 +17,9 @@ globs: src/**/*.{test,spec}.{ts,tsx}
 - Write meaningful test descriptions
 - Follow AAA (Arrange, Act, Assert) pattern
 - Mock external dependencies appropriately
-- Test error states and edge cases
+- Test error states and edge cases as well
 - Include performance testing
+- Place unit test files as close as possible to the unit being tested in the file tree
 
 ## Examples
 <example>

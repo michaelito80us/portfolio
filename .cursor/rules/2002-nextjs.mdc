@@ -1,11 +1,7 @@
 ---
 description: ENFORCE Next.js 15.1.7 and React 19 best practices when WRITING or MODIFYING code to ENSURE optimal performance and maintainability
 globs: src/**/*.{ts,tsx}
-tags: [nextjs, react, typescript, best-practices]
-priority: 1
-version: 1.0.0
 ---
-
 # Next.js 15.1.7 and React 19 Standards
 
 ## Context
