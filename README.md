@@ -1,36 +1,118 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Professional Portfolio Website
 
-## Getting Started
+A modern, high-performance portfolio website built with Next.js 15.1.7 and React 19, showcasing technical expertise and best practices in web development.
 
-First, run the development server:
+## Features
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+- 🚀 Built with Next.js 15.1.7 and React 19
+- 🎨 Modern UI with Tailwind CSS 4
+- 🌐 Internationalization support
+- 🎭 Interactive 3D elements with Three.js
+- 📊 Real-time performance metrics
+- ♿ WCAG 2.1 Level AA compliance
+- 📱 Responsive design
+- 🔍 SEO optimized
+- 🧪 Comprehensive testing suite
+
+## Prerequisites
+
+- Node.js 20.x LTS
+- npm 10.x or newer
+
+## Quick Start
+
+1. Clone the repository:
+
+   ```bash
+   git clone [repository-url]
+   cd portfolio2
+   ```
+
+2. Install dependencies:
+
+   ```bash
+   npm install
+   ```
+
+3. Start the development server:
+
+   ```bash
+   npm run dev
+   ```
+
+4. Open [http://localhost:3000](http://localhost:3000) in your browser
+
+## Available Scripts
+
+- `npm run dev` - Start development server
+- `npm run build` - Build production bundle
+- `npm run start` - Start production server
+- `npm run lint` - Check for linting issues
+- `npm run lint:fix` - Fix linting issues
+- `npm run format` - Format all files
+- `npm run format:check` - Check formatting
+- `npm test` - Run unit and integration tests
+- `npm run test:e2e` - Run E2E tests
+- `npm run test:coverage` - Generate test coverage report
+
+## Project Structure
+
+```
+/
+├── app/                    # Next.js app directory
+│   ├── [locale]/          # i18n routes
+│   │   ├── page.tsx       # Home page
+│   │   ├── about/        # About section
+│   │   ├── projects/     # Projects section
+│   │   ├── work/         # Work section
+│   │   └── contact/      # Contact section
+│   ├── api/               # API routes
+│   └── components/        # React components
+├── content/               # Static content
+├── lib/                   # Utility functions
+├── public/               # Static assets
+├── styles/               # Global styles
+└── tests/                # Test files
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Development
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### Code Style
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+This project uses ESLint and Prettier for code formatting. Configuration can be found in:
 
-## Learn More
+- `.eslintrc.json`
+- `.prettierrc.json`
 
-To learn more about Next.js, take a look at the following resources:
+### Testing
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- Unit/Integration tests: Jest + React Testing Library
+- E2E tests: Playwright
+- Visual regression: Playwright
+- Accessibility testing: axe-core
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+### Performance Monitoring
 
-## Deploy on Vercel
+- Lighthouse CI for performance metrics
+- Web Vitals monitoring
+- Bundle size analysis
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Contributing
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+1. Fork the repository
+2. Create your feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit your changes (`git commit -m 'feat: add amazing feature'`)
+4. Push to the branch (`git push origin feature/amazing-feature`)
+5. Open a Pull Request
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## Acknowledgments
+
+- [Next.js](https://nextjs.org)
+- [React](https://react.dev)
+- [Tailwind CSS](https://tailwindcss.com)
+- [Three.js](https://threejs.org)
+- [Playwright](https://playwright.dev)
