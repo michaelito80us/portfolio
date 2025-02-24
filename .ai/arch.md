@@ -93,15 +93,11 @@ sequenceDiagram
 ├── public/               # Static assets
 ├── styles/               # Global styles
 ├── tests/                # Test files
-│   ├── unit/            # Jest & RTL tests
 │   ├── integration/     # Jest & RTL tests
 │   └── e2e/             # Playwright tests and configs
 │       ├── specs/       # Test specifications
 │       ├── fixtures/    # Test data and fixtures
 │       └── utils/       # Test utilities and helpers
-├── playwright/           # Playwright configuration and utilities
-│   ├── config/          # Test environment configs
-│   └── reports/         # Test reports and screenshots
 ├── .github/              # GitHub Actions
 │   └── workflows/        # CI/CD workflows
 └── docs/                 # Documentation
