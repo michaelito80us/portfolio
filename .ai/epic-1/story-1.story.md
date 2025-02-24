@@ -1,6 +1,6 @@
 # Story 1: Project Initialization
 
-## Status: complete
+## Status: in_progress
 
 ## Epic: Setup & Infrastructure (Week 1-2)
 
