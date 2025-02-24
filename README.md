@@ -57,7 +57,7 @@ A modern, high-performance portfolio website built with Next.js 15.1.7 and React
 
 ## Project Structure
 
-```
+```bash
 /
 ├── app/                    # Next.js app directory
 │   ├── [locale]/          # i18n routes
