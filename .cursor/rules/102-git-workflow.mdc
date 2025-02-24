@@ -1,10 +1,6 @@
 ---
 description: ENFORCE Git workflow standards when CREATING or MODIFYING code to ENSURE consistent version control
 globs: **/*
----
- ---
-description: ENFORCE Git workflow standards when CREATING or MODIFYING code to ENSURE consistent version control
-globs: **/*
 tags: [git, workflow, branching, commits]
 priority: 1
 version: 1.0.0
@@ -81,4 +77,4 @@ added stuff
 fixed bug
 updated code
 WIP
-</example>
+</example> 
