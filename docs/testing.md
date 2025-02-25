@@ -1,24 +1,112 @@
-# Testing Infrastructure
+# Testing Documentation
 
-This document outlines the testing infrastructure and best practices for the portfolio project.
+This document outlines the testing strategy, infrastructure, and best practices for the portfolio project.
 
 ## Overview
 
-The project uses a comprehensive testing approach with multiple layers:
+The project uses a comprehensive testing approach with multiple layers to ensure code quality and reliability:
 
 1. **Unit Tests**: Testing individual components and functions in isolation
 2. **Integration Tests**: Testing interactions between components
 3. **End-to-End Tests**: Testing complete user flows
 4. **Accessibility Tests**: Ensuring WCAG compliance
 5. **Visual Regression Tests**: Ensuring UI consistency
+6. **Performance Tests**: Ensuring optimal performance
 
-## Testing Tools
+## Testing Layers
 
-- **Jest**: JavaScript testing framework
-- **React Testing Library**: Component testing utilities
-- **Playwright**: End-to-end testing
-- **jest-axe**: Accessibility testing
-- **@axe-core/playwright**: Accessibility testing in E2E tests
+### 1. Unit Tests (Jest + React Testing Library)
+
+- Test individual components and functions in isolation
+- Focus on business logic and component behavior
+- Mock external dependencies
+- Coverage requirements: 90%+ for new code
+
+#### Component Testing Guidelines
+
+```tsx
+// Example component test
+import { render, screen } from '@/lib/testing/test-utils';
+import MyComponent from './MyComponent';
+
+describe('MyComponent', () => {
+  it('renders correctly', () => {
+    render(<MyComponent />);
+    expect(screen.getByRole('heading')).toBeInTheDocument();
+  });
+});
+```
+
+### 2. Integration Tests
+
+- Test component interactions
+- Test data flow between components
+- Test hooks and context integration
+- Focus on user workflows
+
+### 3. E2E Tests (Playwright)
+
+- Test complete user journeys
+- Cross-browser testing
+- Mobile responsiveness
+- Accessibility compliance
+
+#### Browser Coverage
+
+- Chromium
+- Firefox
+- WebKit
+- Mobile Chrome (Pixel 5)
+- Mobile Safari (iPhone 12)
+
+#### E2E Test Example
+
+```typescript
+test('user can navigate through main sections', async ({ page }) => {
+  await page.goto('/');
+  await page.click('a[href="#about"]');
+  await expect(page.getByRole('heading')).toBeVisible();
+});
+```
+
+### 4. Accessibility Testing
+
+- WCAG 2.1 Level AA compliance
+- Automated checks via Playwright and jest-axe
+- Manual testing with screen readers
+- Color contrast verification
+- Keyboard navigation testing
+
+```tsx
+import { checkA11y } from '@/lib/testing/a11y-utils';
+import MyComponent from './MyComponent';
+
+describe('MyComponent', () => {
+  it('has no accessibility violations', async () => {
+    await checkA11y(<MyComponent />);
+  });
+});
+```
+
+### 5. Visual Regression Tests
+
+Visual regression tests use Playwright's screenshot comparison:
+
+```ts
+test('component appearance', async ({ page }) => {
+  await page.goto('/my-component');
+  await expect(page).toHaveScreenshot('my-component.png', {
+    threshold: 0.1,
+  });
+});
+```
+
+### 6. Performance Testing
+
+- Lighthouse scores
+- Web Vitals monitoring
+- Bundle size analysis
+- Load testing for API endpoints
 
 ## Directory Structure
 
@@ -32,91 +120,81 @@ The project uses a comprehensive testing approach with multiple layers:
 │   └── types/
 │       └── jest-axe.d.ts      # Type definitions for jest-axe
 ├── tests/
-│   ├── e2e/                   # End-to-end tests
-│   │   ├── smoke.test.ts      # Basic smoke tests
-│   │   ├── a11y.test.ts       # Accessibility tests
-│   │   └── visual.test.ts     # Visual regression tests
-│   ├── integration/           # Integration tests
-│   └── unit/                  # Unit tests
+│   ├── unit/               # Unit tests
+│   │   ├── components/    # Component tests
+│   │   ├── hooks/        # Hook tests
+│   │   └── utils/        # Utility function tests
+│   ├── integration/       # Integration tests
+│   └── e2e/              # End-to-end tests
+│       ├── specs/        # Test specifications
+│       ├── smoke.test.ts      # Basic smoke tests
+│       ├── a11y.test.ts       # Accessibility tests
+│       └── visual.test.ts     # Visual regression tests
 ├── jest.config.ts             # Jest configuration
 ├── jest.setup.ts              # Jest setup file
 └── playwright.config.ts       # Playwright configuration
 ```
 
+## Testing Tools
+
+1. **Jest**
+   - Test runner
+   - Assertion library
+   - Mocking framework
+
+2. **React Testing Library**
+   - Component testing
+   - User-centric testing
+   - Accessibility checks
+
+3. **Playwright**
+   - E2E testing
+   - Cross-browser testing
+   - Mobile testing
+   - Visual regression
+   - Network interception
+
+4. **Accessibility Testing**
+   - jest-axe
+   - @axe-core/playwright
+
 ## Running Tests
 
 ```bash
-# Run unit and integration tests
-npm test
+# Unit and Integration Tests
+npm test                # Run all tests
+npm run test:watch     # Watch mode
+npm run test:coverage  # Coverage report
 
-# Run tests in watch mode
-npm run test:watch
-
-# Run tests with coverage
-npm run test:coverage
-
-# Run E2E tests
-npm run test:e2e
-
-# Run E2E tests with UI
-npm run test:e2e:ui
-```
-
-## Writing Tests
-
-### Unit Tests
-
-Unit tests should focus on testing a single component or function in isolation. Use the custom render function from `@/lib/testing/test-utils` to ensure components are wrapped with necessary providers.
-
-```tsx
-import { render, screen } from '@/lib/testing/test-utils';
-import MyComponent from './MyComponent';
-
-describe('MyComponent', () => {
-  it('renders correctly', () => {
-    render(<MyComponent />);
-    expect(screen.getByRole('heading')).toBeInTheDocument();
-  });
-});
-```
-
-### Accessibility Tests
-
-Use the `checkA11y` function to test components for accessibility violations:
-
-```tsx
-import { checkA11y } from '@/lib/testing/a11y-utils';
-import MyComponent from './MyComponent';
-
-describe('MyComponent', () => {
-  it('has no accessibility violations', async () => {
-    await checkA11y(<MyComponent />);
-  });
-});
-```
-
-### Visual Regression Tests
-
-Visual regression tests use Playwright's screenshot comparison:
-
-```ts
-test('component appearance', async ({ page }) => {
-  await page.goto('/my-component');
-  await expect(page).toHaveScreenshot('my-component.png', {
-    threshold: 0.1,
-  });
-});
+# E2E Tests
+npm run test:e2e      # Run all E2E tests
+npm run test:e2e:ui   # Run with UI mode
+npm run test:e2e:debug # Debug mode
 ```
 
 ## Best Practices
 
-1. **Test Behavior, Not Implementation**: Focus on what the component does, not how it does it
-2. **Use Roles and Accessible Queries**: Prefer queries like `getByRole` over `getByTestId`
-3. **Test Edge Cases**: Include tests for loading, error, and empty states
-4. **Keep Tests Independent**: Each test should be able to run in isolation
-5. **Maintain Coverage**: Aim for >80% test coverage for critical code paths
-6. **Test Accessibility**: Include accessibility checks in component tests
-7. **Visual Testing**: Use visual regression tests for UI-heavy components
+### Test Organization
+
+- One test file per component/feature
+- Clear test descriptions
+- Consistent naming conventions
+
+### Test Quality
+
+- Test behavior, not implementation
+- Use meaningful assertions
+- Avoid testing implementation details
+- Keep tests focused and atomic
+- Use roles and accessible queries (prefer `getByRole` over `getByTestId`)
+- Test edge cases (loading, error, empty states)
+- Keep tests independent (each test should run in isolation)
+
+### Test Data
+
+- Use factories for test data
+- Avoid sharing state between tests
+- Clean up after tests
 
 ## Continuous Integration
 
@@ -126,10 +204,22 @@ Tests are automatically run in the CI pipeline:
 2. E2E tests run on every PR to main
 3. Visual regression tests run on every PR to main
 4. Accessibility tests run on every PR
+5. Regular test metrics review
 
 ## Coverage Requirements
 
-- Unit test coverage: >80%
-- Component test coverage: >80%
+- Statements: 90%
+- Branches: 85%
+- Functions: 90%
+- Lines: 90%
+- Unit test coverage: 90%+
+- Component test coverage: 90%+
 - E2E test coverage: Critical user flows
 - Accessibility coverage: All components
+
+## Reporting
+
+- Jest coverage reports
+- Playwright HTML reports
+- CI/CD test results
+- Regular test metrics review
