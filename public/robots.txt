@@ -1,0 +1,14 @@
+# Allow all web crawlers to access all content
+User-agent: *
+Allow: /
+
+# Sitemap location
+Sitemap: https://portfolio-demo.vercel.app/sitemap.xml
+
+# Disallow crawling of development/admin areas
+Disallow: /api/
+Disallow: /_next/
+Disallow: /admin/
+
+# Crawl delay to prevent overloading the server
+Crawl-delay: 1 
