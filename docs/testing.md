@@ -21,6 +21,7 @@ The project uses a comprehensive testing approach with multiple layers to ensure
 - Focus on business logic and component behavior
 - Mock external dependencies
 - Coverage requirements: 90%+ for new code
+- **Co-located with implementation files** (see Directory Structure)
 
 #### Component Testing Guidelines
 
@@ -112,42 +113,64 @@ test('component appearance', async ({ page }) => {
 
 ```
 ├── src/
+│   ├── components/
+│   │   ├── Button/
+│   │   │   ├── Button.tsx           # Component implementation
+│   │   │   ├── Button.test.tsx      # Unit tests co-located with component
+│   │   │   └── Button.stories.tsx   # Storybook stories
+│   │   └── ...
+│   ├── hooks/
+│   │   ├── useAuth.ts               # Hook implementation
+│   │   ├── useAuth.test.ts          # Hook tests co-located with implementation
+│   │   └── ...
+│   ├── utils/
+│   │   ├── formatters.ts            # Utility functions
+│   │   ├── formatters.test.ts       # Utility tests co-located with implementation
+│   │   └── ...
 │   ├── lib/
-│   │   └── testing/           # Testing utilities
-│   │       ├── test-utils.tsx # Common test utilities
-│   │       ├── a11y-utils.ts  # Accessibility testing utilities
-│   │       └── visual-testing.ts # Visual testing utilities
+│   │   └── testing/                 # Testing utilities
+│   │       ├── test-utils.tsx       # Common test utilities
+│   │       ├── a11y-utils.ts        # Accessibility testing utilities
+│   │       └── visual-testing.ts    # Visual testing utilities
 │   └── types/
-│       └── jest-axe.d.ts      # Type definitions for jest-axe
-├── tests/
-│   ├── unit/               # Unit tests
-│   │   ├── components/    # Component tests
-│   │   ├── hooks/        # Hook tests
-│   │   └── utils/        # Utility function tests
-│   ├── integration/       # Integration tests
-│   └── e2e/              # End-to-end tests
-│       ├── specs/        # Test specifications
-│       ├── smoke.test.ts      # Basic smoke tests
-│       ├── a11y.test.ts       # Accessibility tests
-│       └── visual.test.ts     # Visual regression tests
-├── jest.config.ts             # Jest configuration
-├── jest.setup.ts              # Jest setup file
-└── playwright.config.ts       # Playwright configuration
+│       └── jest-axe.d.ts            # Type definitions for jest-axe
+├── tests/                           # Non-unit tests
+│   ├── integration/                 # Integration tests that span multiple components
+│   └── e2e/                         # End-to-end tests
+│       ├── specs/                   # Test specifications
+│       ├── smoke.test.ts            # Basic smoke tests
+│       ├── a11y.test.ts             # Accessibility tests
+│       └── visual.test.ts           # Visual regression tests
+├── jest.config.ts                   # Jest configuration
+├── jest.setup.ts                    # Jest setup file
+└── playwright.config.ts             # Playwright configuration
 ```
+
+## Test File Naming Conventions
+
+- **Unit tests**: `[filename].(test|spec).(ts|tsx)`
+  - Example: `Button.test.tsx` for `Button.tsx`
+- **Integration tests**: `[feature].integration.(test|spec).(ts|tsx)`
+  - Example: `authentication.integration.test.ts`
+- **E2E tests**: `[feature].(test|spec).(ts|tsx)` in the e2e directory
+  - Example: `navigation.test.ts`
 
 ## Testing Tools
 
 1. **Jest**
+
    - Test runner
    - Assertion library
    - Mocking framework
 
 2. **React Testing Library**
+
    - Component testing
    - User-centric testing
    - Accessibility checks
 
 3. **Playwright**
+
    - E2E testing
    - Cross-browser testing
    - Mobile testing
@@ -176,6 +199,7 @@ npm run test:e2e:debug # Debug mode
 
 ### Test Organization
 
+- **Co-locate test files with implementation files** for unit tests
 - One test file per component/feature
 - Clear test descriptions
 - Consistent naming conventions
