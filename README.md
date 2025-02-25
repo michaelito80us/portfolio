@@ -53,15 +53,15 @@ This portfolio project serves two distinct purposes:
 
 ## Performance Results
 
-| Metric | Score | Target |
-|--------|-------|--------|
-| Lighthouse Performance | 97 | 95+ |
-| Lighthouse Accessibility | 100 | 95+ |
-| Lighthouse Best Practices | 100 | 95+ |
-| Lighthouse SEO | 100 | 95+ |
-| First Contentful Paint | 0.9s | < 1.2s |
-| Time to Interactive | 1.8s | < 2.0s |
-| Bundle Size (gzipped) | 118KB | < 150KB |
+| Metric                    | Score | Target  |
+| ------------------------- | ----- | ------- |
+| Lighthouse Performance    | 97    | 95+     |
+| Lighthouse Accessibility  | 100   | 95+     |
+| Lighthouse Best Practices | 100   | 95+     |
+| Lighthouse SEO            | 100   | 95+     |
+| First Contentful Paint    | 0.9s  | < 1.2s  |
+| Time to Interactive       | 1.8s  | < 2.0s  |
+| Bundle Size (gzipped)     | 118KB | < 150KB |
 
 ## Prerequisites
 
@@ -139,8 +139,9 @@ This portfolio project serves two distinct purposes:
 
 This project uses ESLint and Prettier for code formatting. Configuration can be found in:
 
-- `.eslintrc.json`
-- `.prettierrc.json`
+- `eslint.config.mjs`
+- `prettier.config.ts`
+- `commitlint.config.ts`
 
 ### Testing
 
@@ -184,9 +185,8 @@ The portfolio is deployed on Vercel with the following configuration:
 ## Connect With Me
 
 - **Portfolio**: [https://portfolio-demo.vercel.app](https://portfolio-demo.vercel.app)
-- **GitHub**: [github.com/yourusername](https://github.com/yourusername)
-- **LinkedIn**: [linkedin.com/in/yourprofile](https://linkedin.com/in/yourprofile)
-- **Twitter**: [@yourhandle](https://twitter.com/yourhandle)
+- **GitHub**: [github.com/yourusername](https://github.com/michaelito80us)
+- **LinkedIn**: [linkedin.com/in/yourprofile](https://linkedin.com/in/mepelboim)
 
 ## License
 
