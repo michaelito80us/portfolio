@@ -5,9 +5,9 @@ describe('Home Page', () => {
   it('renders navigation links', () => {
     render(<Home />);
 
-    expect(screen.getByRole('link', { name: /about/i })).toBeInTheDocument();
-    expect(screen.getByRole('link', { name: /projects/i })).toBeInTheDocument();
-    expect(screen.getByRole('link', { name: /contact/i })).toBeInTheDocument();
+    expect(screen.getByRole('menuitem', { name: /about/i })).toBeInTheDocument();
+    expect(screen.getByRole('menuitem', { name: /projects/i })).toBeInTheDocument();
+    expect(screen.getByRole('menuitem', { name: /contact/i })).toBeInTheDocument();
   });
 
   it('renders main heading', () => {
@@ -28,5 +28,12 @@ describe('Home Page', () => {
     render(<Home />);
 
     expect(screen.getByText(/welcome to my portfolio website/i)).toBeInTheDocument();
+  });
+
+  it('renders footer with current year', () => {
+    render(<Home />);
+
+    const footer = screen.getByRole('contentinfo');
+    expect(footer).toHaveTextContent(new Date().getFullYear().toString());
   });
 });

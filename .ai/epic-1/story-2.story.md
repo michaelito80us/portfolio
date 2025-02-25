@@ -11,6 +11,7 @@ Set up advanced infrastructure components including Supabase integration, enhanc
 ## Tasks
 
 1. [x] Set up Supabase
+
    - Initialize Supabase project
    - Configure database schema for user preferences and analytics
    - Set up type-safe client with generated types
@@ -18,6 +19,7 @@ Set up advanced infrastructure components including Supabase integration, enhanc
    - Create basic connection test
 
 2. [x] Enhance CI/CD Pipeline
+
    - Add Lighthouse CI configuration
    - Configure Bundle Analyzer
    - Set up size limits and performance budgets
@@ -25,6 +27,7 @@ Set up advanced infrastructure components including Supabase integration, enhanc
    - Configure branch protection rules
 
 3. [x] Configure Development Tooling
+
    - Set up Husky for git hooks
    - Configure commit-lint for conventional commits
    - Add pre-commit formatting and linting
@@ -82,8 +85,8 @@ thresholds:
 
 # Bundle size limits
 limits:
-  - path: "/.next/static/chunks/*.js"
-    maxSize: "150kB"
+  - path: '/.next/static/chunks/*.js'
+    maxSize: '150kB'
 ```
 
 ### Husky Configuration

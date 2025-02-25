@@ -8,20 +8,18 @@ const bundleAnalyzer = withBundleAnalyzer({
 const config: NextConfig = {
   reactStrictMode: true,
   poweredByHeader: false,
-  // Enable Turbopack
-  turbo: {
-    rules: {
-      // Add any custom Turbopack rules here
-    },
-  },
   // Performance optimizations
   experimental: {
-    optimizeCss: true,
-    optimizePackageImports: ['@heroicons/react', '@radix-ui/react-icons'],
-    // Enable modern webpack features through Turbopack
     turbo: {
-      loaders: {
-        // Add any custom loaders here
+      // Configure Turbopack options
+      resolveAlias: {
+        // Add any module aliases here if needed
+      },
+      // Configure file extensions to resolve
+      resolveExtensions: ['.js', '.jsx', '.ts', '.tsx', '.json'],
+      // Use rules instead of loaders (which is now deprecated)
+      rules: {
+        // Example: "*.svg": ['@svgr/webpack', 'url-loader']
       },
     },
   },

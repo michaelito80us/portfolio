@@ -15,11 +15,13 @@ This document outlines the development workflow and practices for the portfolio 
 ## Development Process
 
 1. **Starting New Work**
+
    - Create branch from `develop`
    - Follow branch naming convention
    - Update task status in relevant story file
 
 2. **Development**
+
    - Follow TDD approach where applicable
    - Ensure all tests pass locally
    - Meet code coverage requirements
@@ -27,6 +29,7 @@ This document outlines the development workflow and practices for the portfolio 
    - Run `npm run typecheck` for type safety
 
 3. **Pre-commit Checklist**
+
    - Run `npm run lint:fix` for linting
    - Run `npm run format` for formatting
    - Run `npm test` for unit tests
@@ -43,7 +46,10 @@ This document outlines the development workflow and practices for the portfolio 
      - `style:` for formatting changes
      - `chore:` for maintenance tasks
 
+> **Note:** Commit messages are automatically validated using commitlint to ensure they follow the conventional commits format. The pre-commit hook will run linting and formatting, while the pre-push hook will run type checking and tests.
+
 5. **Pull Request Process**
+
    - Create PR against `develop`
    - Fill out PR template
    - Request review from team members
@@ -54,6 +60,32 @@ This document outlines the development workflow and practices for the portfolio 
    - Automated deployment to staging from `develop`
    - Release branches for production deployments
    - Tag releases with semantic versioning
+
+### Vercel Deployment
+
+The project is configured for deployment on Vercel with the following features:
+
+- Preview deployments for all branches and PRs
+- Production deployment from the `main` branch
+- Custom security headers
+- Region-specific deployment (SFO1)
+- Legacy peer dependencies support for React 19
+
+To deploy manually:
+
+```bash
+# Install Vercel CLI
+npm install -g vercel
+
+# Login to Vercel
+vercel login
+
+# Deploy to preview
+vercel
+
+# Deploy to production
+vercel --prod
+```
 
 ## Quality Standards
 

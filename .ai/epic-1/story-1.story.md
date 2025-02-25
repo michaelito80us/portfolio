@@ -50,6 +50,7 @@ Initialize the project with the core technology stack and essential configuratio
    - Initial build successful
 
 2. Configure Tailwind CSS 4:
+
    - Uninstalled old Tailwind packages
    - Installed new packages: `tailwindcss`, `@tailwindcss/postcss`, `postcss`
    - Updated PostCSS config to use `@tailwindcss/postcss`
@@ -58,6 +59,7 @@ Initialize the project with the core technology stack and essential configuratio
    - Committed changes with message "feat: migrate to Tailwind CSS v4"
 
 3. Set up ESLint and Prettier:
+
    - Installed ESLint and Prettier packages
    - Created `.prettierrc.json` with standard configuration
    - Updated ESLint config to integrate with Prettier and TypeScript
@@ -69,11 +71,12 @@ Initialize the project with the core technology stack and essential configuratio
    - Fixed all existing linting and formatting issues
 
 4. Initialize Git Repository:
+
    - Git repository already initialized
    - Verified comprehensive `.gitignore` file with rules for:
      - Dependencies (node_modules)
      - Build outputs (.next, out, build)
-     - Environment files (.env*)
+     - Environment files (.env\*)
      - IDE files (.vscode, .idea)
      - Debug logs
      - Testing artifacts
@@ -81,6 +84,7 @@ Initialize the project with the core technology stack and essential configuratio
      - Other common exclusions
 
 5. Create Project Structure:
+
    - Created directory structure according to architecture document
    - Added base route files and configurations
    - Created component organization structure
@@ -89,6 +93,7 @@ Initialize the project with the core technology stack and essential configuratio
    - Committed changes with message "feat: create project directory structure according to architecture"
 
 6. Update README:
+
    - Added comprehensive project description
    - Listed key features and technologies
    - Added prerequisites and quick start guide
@@ -99,6 +104,7 @@ Initialize the project with the core technology stack and essential configuratio
    - Committed changes with message "docs: update README with comprehensive setup instructions and project information"
 
 7. Configure GitHub Actions:
+
    - Created .github/workflows/ci.yml
    - Configured workflow to run on push to main and pull requests
    - Added steps for:
@@ -115,6 +121,7 @@ Initialize the project with the core technology stack and essential configuratio
    - Committed changes with message "ci: add GitHub Actions workflow"
 
 8. Set up Jest and React Testing Library:
+
    - Created jest.config.ts with Next.js and TypeScript support
    - Added jest.setup.ts with React Testing Library configuration
    - Configured common mocks for Next.js router and Image component

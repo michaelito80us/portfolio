@@ -92,11 +92,13 @@ tests/
 ## Testing Tools
 
 1. **Jest**
+
    - Test runner
    - Assertion library
    - Mocking framework
 
 2. **React Testing Library**
+
    - Component testing
    - User-centric testing
    - Accessibility checks
@@ -111,17 +113,20 @@ tests/
 ## Best Practices
 
 1. **Test Organization**
+
    - One test file per component/feature
    - Clear test descriptions
    - Consistent naming conventions
 
 2. **Test Quality**
+
    - Test behavior, not implementation
    - Use meaningful assertions
    - Avoid testing implementation details
    - Keep tests focused and atomic
 
 3. **Test Data**
+
    - Use factories for test data
    - Avoid sharing state between tests
    - Clean up after tests
