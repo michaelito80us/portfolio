@@ -1,5 +1,6 @@
 {
-  "extends": ["next/core-web-vitals", "next/typescript"],
+  "root": true,
+  "extends": ["next/core-web-vitals", "next/typescript", "prettier"],
   "plugins": ["@typescript-eslint", "prettier"],
   "parser": "@typescript-eslint/parser",
   "parserOptions": {
@@ -7,25 +8,31 @@
     "sourceType": "module",
     "ecmaFeatures": {
       "jsx": true
+    },
+    "project": "./tsconfig.json"
+  },
+  "settings": {
+    "next": {
+      "rootDir": "."
     }
   },
   "rules": {
-    "prettier/prettier": [
-      "error",
-      {
-        "semi": true,
-        "singleQuote": true,
-        "tabWidth": 2,
-        "printWidth": 100,
-        "trailingComma": "es5",
-        "arrowParens": "avoid",
-        "endOfLine": "lf"
-      }
-    ],
+    "prettier/prettier": ["error"],
     "@typescript-eslint/no-unused-vars": "error",
     "@typescript-eslint/explicit-function-return-type": "off",
     "@typescript-eslint/explicit-module-boundary-types": "off",
     "@typescript-eslint/no-explicit-any": "error",
     "react/react-in-jsx-scope": "off"
-  }
+  },
+  "ignorePatterns": [
+    "node_modules/",
+    ".next/",
+    "out/",
+    "public/",
+    "coverage/",
+    "playwright-report/",
+    "test-results/",
+    "xnotes/",
+    "docs/"
+  ]
 }
