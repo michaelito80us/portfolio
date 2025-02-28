@@ -89,25 +89,25 @@ export function ContrastRatio({ background, foreground, label }: ContrastRatioPr
 
         <div className="grid grid-cols-2 gap-2">
           <div className="flex items-center gap-1 text-xs">
-            {compliance.aa ? <Check className="text-success h-3 w-3" /> : <X className="text-danger h-3 w-3" />}
+            {compliance.aa ? <Check className="h-3 w-3 text-success" /> : <X className="h-3 w-3 text-danger" />}
             <span>AA {compliance.aa ? 'Pass' : 'Fail'}</span>
           </div>
           <div className="flex items-center gap-1 text-xs">
-            {compliance.aaa ? <Check className="text-success h-3 w-3" /> : <X className="text-danger h-3 w-3" />}
+            {compliance.aaa ? <Check className="h-3 w-3 text-success" /> : <X className="h-3 w-3 text-danger" />}
             <span>AAA {compliance.aaa ? 'Pass' : 'Fail'}</span>
           </div>
           <div className="flex items-center gap-1 text-xs">
-            {compliance.aaLarge ? <Check className="text-success h-3 w-3" /> : <X className="text-danger h-3 w-3" />}
+            {compliance.aaLarge ? <Check className="h-3 w-3 text-success" /> : <X className="h-3 w-3 text-danger" />}
             <span>AA Large {compliance.aaLarge ? 'Pass' : 'Fail'}</span>
           </div>
           <div className="flex items-center gap-1 text-xs">
-            {compliance.aaaLarge ? <Check className="text-success h-3 w-3" /> : <X className="text-danger h-3 w-3" />}
+            {compliance.aaaLarge ? <Check className="h-3 w-3 text-success" /> : <X className="h-3 w-3 text-danger" />}
             <span>AAA Large {compliance.aaaLarge ? 'Pass' : 'Fail'}</span>
           </div>
         </div>
 
         {!compliance.aa && (
-          <div className="bg-danger border-danger/20 text-danger-foreground mt-2 rounded border p-2 text-xs">
+          <div className="mt-2 rounded border border-danger/20 bg-danger p-2 text-xs text-danger-foreground">
             <strong>Suggestion:</strong> {suggestion}
           </div>
         )}

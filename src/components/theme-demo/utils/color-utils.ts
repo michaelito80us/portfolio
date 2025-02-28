@@ -60,8 +60,8 @@ export function rgbToHsl(r: number, g: number, b: number) {
   const max = Math.max(r, g, b);
   const min = Math.min(r, g, b);
   let h = 0,
-    s = 0,
-    l = (max + min) / 2;
+    s = 0;
+  const l = (max + min) / 2;
 
   if (max !== min) {
     const d = max - min;
@@ -107,12 +107,9 @@ export function getSuggestion(bgHex: string, fgHex: string, label: string): stri
 
   // Extract color name from label
   const parts = label.split(' / ');
-  const bgName = parts[0].toLowerCase();
   const fgName = parts.length > 1 ? parts[1].toLowerCase() : '';
 
-  const bgRgb = hexToRgb(bgHex);
   const fgRgb = hexToRgb(fgHex);
-  const bgHsl = rgbToHsl(bgRgb.r, bgRgb.g, bgRgb.b);
   const fgHsl = rgbToHsl(fgRgb.r, fgRgb.g, fgRgb.b);
 
   // Estimate lightness adjustment needed (simplified)

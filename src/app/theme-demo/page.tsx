@@ -1,4 +1,4 @@
-import { ThemeDemo } from '@/components/theme-demo';
+import { ThemeDemo } from '@/components/theme-demo/index';
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {

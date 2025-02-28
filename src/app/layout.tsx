@@ -20,7 +20,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       suppressHydrationWarning
     >
       <body>
-        <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
+        <ThemeProvider defaultTheme="dark">
           <FocusIndicator />
           <SkipLink href="#main-content">Skip to main content</SkipLink>
           <main id="main-content">{children}</main>

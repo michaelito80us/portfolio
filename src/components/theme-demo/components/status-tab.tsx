@@ -19,22 +19,22 @@ export function StatusTab() {
             <div className="space-y-4">
               <h3 className="text-lg font-medium">Status Indicators</h3>
               <div className="grid grid-cols-1 gap-4">
-                <div className="bg-success text-success-foreground flex items-center gap-3 rounded-md p-4">
+                <div className="flex items-center gap-3 rounded-md bg-success p-4 text-success-foreground">
                   <CheckCircle className="h-5 w-5" />
                   <span className="font-medium">Success Message</span>
                   <span className="ml-auto font-mono text-xs" id="success-hex"></span>
                 </div>
-                <div className="bg-caution text-caution-foreground flex items-center gap-3 rounded-md p-4">
+                <div className="flex items-center gap-3 rounded-md bg-caution p-4 text-caution-foreground">
                   <AlertTriangle className="h-5 w-5" />
                   <span className="font-medium">Caution Message</span>
                   <span className="ml-auto font-mono text-xs" id="caution-hex"></span>
                 </div>
-                <div className="bg-danger text-danger-foreground flex items-center gap-3 rounded-md p-4">
+                <div className="flex items-center gap-3 rounded-md bg-danger p-4 text-danger-foreground">
                   <AlertCircle className="h-5 w-5" />
                   <span className="font-medium">Danger Message</span>
                   <span className="ml-auto font-mono text-xs" id="danger-hex"></span>
                 </div>
-                <div className="bg-info text-info-foreground flex items-center gap-3 rounded-md p-4">
+                <div className="flex items-center gap-3 rounded-md bg-info p-4 text-info-foreground">
                   <Info className="h-5 w-5" />
                   <span className="font-medium">Info Message</span>
                   <span className="ml-auto font-mono text-xs" id="info-hex"></span>

@@ -1,7 +1,7 @@
 'use client';
 
 import * as React from 'react';
-import { Copy, Check } from 'lucide-react';
+import { Copy } from 'lucide-react';
 import { useColorHex } from '../hooks/use-color-hex';
 
 interface ColorSwatchProps {

@@ -153,10 +153,7 @@ export default {
       },
     },
   },
-  plugins: [
-    import('@tailwindcss/typography'),
-    import('tailwindcss-animate'),
-  ],
+  plugins: [import('@tailwindcss/typography'), import('tailwindcss-animate')],
 };
 ```
 
@@ -285,7 +282,7 @@ import { useTheme } from '@/components/theme-provider';
 
 export function ThemeAwareComponent() {
   const { theme, setTheme, prefersReducedMotion } = useTheme();
-  
+
   return (
     <div>
       <p>Current theme: {theme}</p>
