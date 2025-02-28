@@ -23,13 +23,6 @@
       "@/fonts": ["./src/styles/fonts"]
     }
   },
-  "include": [
-    "next-env.d.ts",
-    "**/*.ts",
-    "**/*.tsx",
-    ".next/types/**/*.ts",
-    "next.config.ts",
-    ".eslintrc.json"
-  ],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "next.config.ts", ".eslintrc.json"],
   "exclude": ["node_modules"]
 }

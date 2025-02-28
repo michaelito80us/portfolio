@@ -6,7 +6,7 @@ import { cn } from '@/lib/utils';
 import Script from 'next/script';
 
 const js = String.raw;
-let darkModeScript = js`
+const darkModeScript = js`
   if (!('_updateTheme' in window)) {
     window._updateTheme = function updateTheme(theme) {
       let classList = document.documentElement.classList;
@@ -69,10 +69,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       suppressHydrationWarning
     >
       <head>
-        <script
-          type="text/javascript"
-          dangerouslySetInnerHTML={{ __html: darkModeScript }}
-        ></script>
+        <script type="text/javascript" dangerouslySetInnerHTML={{ __html: darkModeScript }}></script>
         {/*
           We inject the script via the <Script/> tag again, since we found the regular `<script>`
           tag to not execute when rendering a not-found page.
