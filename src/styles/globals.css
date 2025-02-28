@@ -68,35 +68,35 @@
   .dark {
     /* Dark theme with user's preferred colors */
     --background: 210 45% 11%; /* #0a1a2b - User's dark bg */
-    --foreground: 210 15% 60%; /* #869ba9 - User's dark body text */
+    --foreground: 210 15% 85%; /* #d3d9de - User's dark body text */
 
     --card: 210 33% 14%; /* #112233 - User's dark card bg */
-    --card-foreground: 210 15% 60%; /* #869ba9 - User's dark body text */
+    --card-foreground: 210 15% 80%; /* #c4ccd4 - User's dark body text */
 
     --header: 35 60% 72%; /* #deb992 - User's dark header text */
     --header-foreground: 210 45% 11%; /* #0a1a2b - Dark background */
 
-    --body: 210 15% 60%; /* #869ba9 - User's dark body text */
+    --body: 210 15% 85%; /* #d3d9de - User's dark body text */
     --body-foreground: 210 45% 11%; /* #0a1a2b - Dark background */
 
     --link: 174 75% 45%; /* #1ba098 - User's dark link */
     --link-hover: 174 75% 55%; /* #25c6bc - Lighter version for hover */
 
-    --border: 210 33% 18%; /* #1a2b3c - User's dark card border */
+    --border: 210 33% 20%; /* #1a2b3c - User's dark card border */
 
     --primary: 174 75% 45%; /* #1ba098 - User's dark link */
-    --primary-foreground: 210 33% 98%; /* #f5f8fc - Light text */
+    --primary-foreground: 210 45% 11%; /* #0a1a2b - Dark background */
 
     --secondary: 35 60% 72%; /* #deb992 - User's dark header text */
     --secondary-foreground: 210 45% 11%; /* #0a1a2b - Dark background */
 
     --muted: 210 33% 18%; /* #1a2b3c - User's dark card border */
-    --muted-foreground: 210 15% 50%; /* #6d8394 - Slightly dimmer than body text */
+    --muted-foreground: 210 15% 72%; /* #adb7c2 - Slightly dimmer than body text */
 
-    --accent: 35 60% 20%; /* #5a3f24 - Darker version of header color */
+    --accent: 35 60% 17%; /* #463011 - Darker version of header color */
     --accent-foreground: 35 60% 72%; /* #deb992 - User's dark header text */
 
-    --destructive: 0 70% 50%; /* #e63535 - Red for destructive actions */
+    --destructive: 0 70% 45%; /* #c32222 - Red for destructive actions */
     --destructive-foreground: 210 33% 98%; /* #f5f8fc - Light text */
 
     --popover: 210 33% 14%; /* #112233 - User's dark card bg */
@@ -109,11 +109,11 @@
     --caution: 30 97% 56%; /* #fc9324 - User's dark caution */
     --caution-foreground: 210 45% 11%; /* #0a1a2b - Dark background */
 
-    --danger: 5 57% 60%; /* #db5c55 - User's dark danger */
-    --danger-foreground: 210 45% 11%; /* #0a1a2b - Dark background */
+    --danger: 5 57% 65%; /* #d97b73 - User's dark danger */
+    --danger-foreground: 0 0% 0%; /* #000000 - Dark background */
 
-    --info: 210 80% 55%; /* #2e8eec - User's dark info */
-    --info-foreground: 210 45% 11%; /* #0a1a2b - Dark background */
+    --info: 210 80% 65%; /* #5ea6ed - User's dark info */
+    --info-foreground: 210 45% 8%; /* #0b141e - Dark background */
   }
 }
 
