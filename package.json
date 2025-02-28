@@ -11,7 +11,7 @@
     "lint:fix:staged": "git diff --cached --name-only --diff-filter=ACMR | grep -E '\\.(js|jsx|ts|tsx)$' | xargs -r next lint --fix --file",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
-    "format:staged": "git diff --cached --name-only --diff-filter=ACMR | grep -E '\\.(js|jsx|ts|tsx|json|css|scss|md|mdx|html)$' | xargs -r prettier --write",
+    "format:staged": "git diff --cached --name-only --diff-filter=ACMR | grep -E '\\.(js|jsx|ts|tsx|json|css|scss|md|mdx|html)$' | xargs -r prettier --write || true",
     "typecheck": "tsc --noEmit",
     "test": "jest",
     "test:watch": "jest --watch",
