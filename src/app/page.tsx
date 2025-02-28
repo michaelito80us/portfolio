@@ -8,7 +8,7 @@ export default function Home() {
           <li role="none">
             <Link
               href="#about"
-              className="rounded px-2 py-1 hover:underline focus:ring-2 focus:ring-blue-400 focus:outline-none"
+              className="rounded px-2 py-1 outline-none hover:underline focus:ring-2 focus:ring-blue-400"
               role="menuitem"
             >
               About
@@ -17,7 +17,7 @@ export default function Home() {
           <li role="none">
             <Link
               href="#projects"
-              className="rounded px-2 py-1 hover:underline focus:ring-2 focus:ring-blue-400 focus:outline-none"
+              className="rounded px-2 py-1 outline-none hover:underline focus:ring-2 focus:ring-blue-400"
               role="menuitem"
             >
               Projects
@@ -26,7 +26,7 @@ export default function Home() {
           <li role="none">
             <Link
               href="#contact"
-              className="rounded px-2 py-1 hover:underline focus:ring-2 focus:ring-blue-400 focus:outline-none"
+              className="rounded px-2 py-1 outline-none hover:underline focus:ring-2 focus:ring-blue-400"
               role="menuitem"
             >
               Contact
