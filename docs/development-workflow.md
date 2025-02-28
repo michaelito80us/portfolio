@@ -37,6 +37,7 @@ This document outlines the development workflow and practices for the portfolio 
    - Run `npm run build` to verify build
 
 4. **Commit Guidelines**
+
    - Use conventional commits format:
      - `feat:` for new features
      - `fix:` for bug fixes

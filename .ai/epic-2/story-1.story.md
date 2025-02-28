@@ -94,10 +94,7 @@ module.exports = {
       },
     },
   },
-  plugins: [
-    require('@tailwindcss/typography'),
-    require('tailwindcss-animate'),
-  ],
+  plugins: [require('@tailwindcss/typography'), require('tailwindcss-animate')],
 };
 ```
 
@@ -124,21 +121,14 @@ const ThemeContext = createContext<{
   setTheme: () => null,
 });
 
-export function ThemeProvider({
-  children,
-  defaultTheme = 'system',
-}: ThemeProviderProps) {
+export function ThemeProvider({ children, defaultTheme = 'system' }: ThemeProviderProps) {
   const [theme, setTheme] = useState<Theme>(defaultTheme);
 
   useEffect(() => {
     // Implementation details
   }, [theme]);
 
-  return (
-    <ThemeContext.Provider value={{ theme, setTheme }}>
-      {children}
-    </ThemeContext.Provider>
-  );
+  return <ThemeContext.Provider value={{ theme, setTheme }}>{children}</ThemeContext.Provider>;
 }
 
 export const useTheme = () => useContext(ThemeContext);
@@ -147,23 +137,27 @@ export const useTheme = () => useContext(ThemeContext);
 ## Implementation Plan
 
 1. Set up Tailwind CSS v3 with Next.js
+
    - Install dependencies
    - Configure tailwind.config.js
    - Set up PostCSS configuration
    - Create global styles
 
 2. Integrate Radix UI
+
    - Install Radix UI primitives
    - Create theme variables
    - Set up component styling patterns
 
 3. Implement Theme System
+
    - Create ThemeProvider component
    - Implement theme switching
    - Set up theme persistence
    - Configure system preference detection
 
 4. Define Design Tokens
+
    - Create CSS variables for tokens
    - Set up color scales
    - Define typography system

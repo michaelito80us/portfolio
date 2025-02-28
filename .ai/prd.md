@@ -162,12 +162,7 @@ Each goal is associated with specific, measurable KPIs:
      const [currentPosition, setPosition] = usePersistedState('widget-position', position);
 
      return (
-       <Draggable
-         position={currentPosition}
-         onStop={handleDragStop}
-         bounds="parent"
-         handle=".widget-handle"
-       >
+       <Draggable position={currentPosition} onStop={handleDragStop} bounds="parent" handle=".widget-handle">
          <div
            className={cn('metrics-widget', { minimized: isMinimized })}
            role="region"

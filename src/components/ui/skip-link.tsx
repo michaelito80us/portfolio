@@ -13,7 +13,7 @@ const SkipLink = React.forwardRef<HTMLAnchorElement, SkipLinkProps>(({ className
       ref={ref}
       href={href}
       className={cn(
-        'focus:bg-background focus:text-foreground focus:border-ring sr-only focus:not-sr-only focus:absolute focus:z-50 focus:rounded-md focus:border focus:p-3 focus:shadow-md focus:outline-none',
+        'sr-only focus:not-sr-only focus:absolute focus:z-50 focus:rounded-md focus:border focus:border-ring focus:bg-background focus:p-3 focus:text-foreground focus:shadow-md focus:outline-none',
         className
       )}
       {...props}
