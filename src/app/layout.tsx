@@ -1,4 +1,4 @@
-import type { Metadata } from 'next';
+import type { Metadata, Viewport } from 'next';
 import '../styles/globals.css';
 import Script from 'next/script';
 
@@ -12,8 +12,13 @@ export const metadata: Metadata = {
   title: 'Professional Portfolio',
   description: 'A showcase of my professional work and experience',
   manifest: '/manifest.json',
+};
+
+export const viewport: Viewport = {
   themeColor: '#000000',
-  viewport: 'width=device-width, initial-scale=1, maximum-scale=5',
+  width: 'device-width',
+  initialScale: 1,
+  maximumScale: 5,
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
@@ -24,9 +29,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       suppressHydrationWarning
     >
       <head>
-        <meta name="theme-color" content="#000000" />
         <link rel="manifest" href="/manifest.json" />
-        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
       </head>
       <body>
         <ThemeProvider defaultTheme="dark">
