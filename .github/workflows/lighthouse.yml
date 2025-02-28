@@ -28,7 +28,7 @@ jobs:
         with:
           configPath: './lighthouse.config.json'
           uploadArtifacts: true
-          artifactName: lighthouse-audit-results
+          artifactName: lighthouse_results
           temporaryPublicStorage: true
           runs: 3
 
@@ -48,14 +48,14 @@ jobs:
         uses: actions/github-script@v6
         with:
           script: |
-            // Get the Lighthouse results URL from the temporary public storage
-            const links = context.payload.repository ? 
-              `https://storage.googleapis.com/lighthouse-infrastructure.appspot.com/reports/1234.html` :
-              'No Lighthouse results available';
+            // Get the Lighthouse results URL from the step outputs
+            const links = `${{ steps.lighthouse.outputs.links }}` || 'No Lighthouse results available';
               
             const comment = `## 🚦 Lighthouse Report
 
             Lighthouse audit completed. View the detailed reports at the links provided by the Lighthouse CI action.
+
+            ${links}
 
             For performance and accessibility scores, check the detailed reports.
 
