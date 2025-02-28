@@ -28,7 +28,7 @@
     "**/*.ts",
     "**/*.tsx",
     ".next/types/**/*.ts",
-    "next.config.ts",
+    "old_next.config.ts",
     ".eslintrc.json",
     "tailwind.config.mjs",
     "postcss.config.mjs"

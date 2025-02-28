@@ -1,11 +1,17 @@
-import type { NextConfig } from 'next';
-import withBundleAnalyzer from '@next/bundle-analyzer';
+/** @type {import('next').NextConfig} */
 
-const bundleAnalyzer = withBundleAnalyzer({
+let withSentryConfig;
+try {
+  withSentryConfig = require('@sentry/nextjs').withSentryConfig;
+} catch (e) {
+  withSentryConfig = config => config;
+}
+
+// Import bundle analyzer
+const withBundleAnalyzer = require('@next/bundle-analyzer')({
   enabled: process.env.ANALYZE === 'true',
 });
 
-// Define Content Security Policy
 const ContentSecurityPolicy = `
   default-src 'self';
   script-src 'self' 'unsafe-inline' 'unsafe-eval';
@@ -22,7 +28,6 @@ const ContentSecurityPolicy = `
   upgrade-insecure-requests;
 `;
 
-// Define security headers
 const securityHeaders = [
   {
     key: 'Content-Security-Policy',
@@ -50,10 +55,9 @@ const securityHeaders = [
   },
 ];
 
-const config: NextConfig = {
+const nextConfig = {
   reactStrictMode: true,
   poweredByHeader: false,
-  // Performance optimizations
   experimental: {
     turbo: {
       // Configure Turbopack options
@@ -62,10 +66,6 @@ const config: NextConfig = {
       },
       // Configure file extensions to resolve
       resolveExtensions: ['.js', '.jsx', '.ts', '.tsx', '.json'],
-      // Use rules instead of loaders (which is now deprecated)
-      rules: {
-        // Example: "*.svg": ['@svgr/webpack', 'url-loader']
-      },
     },
   },
   async headers() {
@@ -86,5 +86,6 @@ const config: NextConfig = {
   },
 };
 
-// Apply bundle analyzer only
-export default bundleAnalyzer(config);
+// Apply bundle analyzer and Sentry config
+module.exports = withSentryConfig(withBundleAnalyzer(nextConfig));
+// module.exports = nextConfig;
