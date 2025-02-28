@@ -28,10 +28,11 @@
     "**/*.ts",
     "**/*.tsx",
     ".next/types/**/*.ts",
-    "old_next.config.ts",
+    "next.config.ts",
     ".eslintrc.json",
     "tailwind.config.mjs",
-    "postcss.config.mjs"
+    "postcss.config.mjs",
+    "scripts/**/*.ts"
   ],
   "exclude": ["node_modules"]
 }

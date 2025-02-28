@@ -1,6 +1,7 @@
-const fs = require('fs');
-const path = require('path');
-const config = require('../lighthouse-local').default;
+import fs from 'fs';
+import path from 'path';
+// eslint-disable-next-line @typescript-eslint/no-require-imports
+import config from '../lighthouse-local';
 
 // Convert the config to JSON and write it to a file
 const configJson = JSON.stringify(config, null, 2);

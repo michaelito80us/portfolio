@@ -1,5 +1,5 @@
-const fs = require('fs');
-const path = require('path');
+import fs from 'fs';
+import path from 'path';
 
 // Create the icons directory if it doesn't exist
 const iconsDir = path.join(__dirname, '../public/icons');
