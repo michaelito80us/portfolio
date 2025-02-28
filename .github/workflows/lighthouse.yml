@@ -14,6 +14,11 @@ jobs:
       - name: Install dependencies
         run: npm ci --legacy-peer-deps
 
+      - name: Create directories
+        run: |
+          mkdir -p lighthouse-reports
+          mkdir -p .lighthouseci
+
       - name: Build project
         run: npm run build
 
@@ -26,6 +31,16 @@ jobs:
           artifactName: lighthouse-audit-results
           temporaryPublicStorage: true
           runs: 3
+
+      - name: Upload performance reports
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: lighthouse-reports
+          path: |
+            lighthouse-reports/
+            .lighthouseci/
+          retention-days: 14
 
       # Create a comment with the Lighthouse results
       - name: Create Lighthouse comment
@@ -43,6 +58,8 @@ jobs:
             Lighthouse audit completed. View the detailed reports at the links provided by the Lighthouse CI action.
 
             For performance and accessibility scores, check the detailed reports.
+
+            Reports are also available as artifacts from this workflow run.
             `;
 
             core.setOutput('comment', comment);
