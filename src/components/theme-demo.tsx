@@ -1,3 +1,5 @@
+'use client';
+
 import * as React from 'react';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
@@ -5,8 +7,8 @@ import { Label } from '@/components/ui/label';
 import { Button } from '@/components/ui/button';
 import { ThemeToggle } from '@/components/theme-toggle';
 import { useTheme } from '@/components/theme-provider';
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
-import { Switch } from '@/components/ui/switch';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from './ui/tabs';
+import { Switch } from './ui/switch';
 
 export function ThemeDemo() {
   const { prefersReducedMotion } = useTheme();
