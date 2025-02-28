@@ -46,7 +46,7 @@ This document outlines the development workflow and practices for the portfolio 
      - `style:` for formatting changes
      - `chore:` for maintenance tasks
 
-> **Note:** Commit messages are automatically validated using commitlint to ensure they follow the conventional commits format. The pre-commit hook will run linting and formatting, while the pre-push hook will run type checking and tests.
+   > **Note:** Commit messages are automatically validated using commitlint to ensure they follow the conventional commits format. The pre-commit hook will run linting and formatting, while the pre-push hook will run type checking and tests.
 
 5. **Pull Request Process**
 

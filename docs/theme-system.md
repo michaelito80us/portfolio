@@ -117,9 +117,7 @@ export function Layout({ children }) {
     <>
       <SkipLink href="#main-content">Skip to main content</SkipLink>
       <header>...</header>
-      <main id="main-content">
-        {children}
-      </main>
+      <main id="main-content">{children}</main>
     </>
   );
 }
@@ -206,16 +204,8 @@ import { useTheme } from '@/components/theme-provider';
 
 function MyComponent() {
   const { prefersReducedMotion } = useTheme();
-  
-  return (
-    <div>
-      {prefersReducedMotion ? (
-        <StaticVersion />
-      ) : (
-        <AnimatedVersion />
-      )}
-    </div>
-  );
+
+  return <div>{prefersReducedMotion ? <StaticVersion /> : <AnimatedVersion />}</div>;
 }
 ```
 
@@ -238,10 +228,7 @@ module.exports = {
       // Add other customizations
     },
   },
-  plugins: [
-    require('@tailwindcss/typography'),
-    require('tailwindcss-animate'),
-  ],
+  plugins: [require('@tailwindcss/typography'), require('tailwindcss-animate')],
 };
 ```
 

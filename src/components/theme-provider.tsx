@@ -1,38 +1,109 @@
 'use client';
 
+import * as React from 'react';
 import { createContext, useContext, useEffect, useState } from 'react';
 
-type Theme = 'dark' | 'light' | 'system';
+type Theme = 'light' | 'dark' | 'system';
 
 interface ThemeProviderProps {
   children: React.ReactNode;
   defaultTheme?: Theme;
+  storageKey?: string;
+  attribute?: string;
+  enableSystem?: boolean;
+  disableTransitionOnChange?: boolean;
 }
 
-interface ThemeContextValue {
+interface ThemeProviderState {
   theme: Theme;
   setTheme: (theme: Theme) => void;
+  prefersReducedMotion: boolean;
 }
 
-const ThemeContext = createContext<ThemeContextValue | undefined>(undefined);
+const initialState: ThemeProviderState = {
+  theme: 'system',
+  setTheme: () => null,
+  prefersReducedMotion: false,
+};
 
-export function ThemeProvider({ children, defaultTheme = 'system' }: ThemeProviderProps) {
+const ThemeProviderContext = createContext<ThemeProviderState>(initialState);
+
+export function ThemeProvider({
+  children,
+  defaultTheme = 'system',
+  storageKey = 'theme',
+  attribute = 'class',
+  enableSystem = true,
+  disableTransitionOnChange = false,
+  ...props
+}: ThemeProviderProps) {
   const [theme, setTheme] = useState<Theme>(defaultTheme);
+  const [prefersReducedMotion, setPrefersReducedMotion] = useState<boolean>(false);
+
+  useEffect(() => {
+    const savedTheme = localStorage.getItem(storageKey) as Theme | null;
+
+    if (savedTheme) {
+      setTheme(savedTheme);
+    } else if (defaultTheme !== 'system') {
+      setTheme(defaultTheme);
+    }
+  }, [defaultTheme, storageKey]);
+
+  // Check for reduced motion preference
+  useEffect(() => {
+    const mediaQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
+    setPrefersReducedMotion(mediaQuery.matches);
+
+    const handleChange = () => {
+      setPrefersReducedMotion(mediaQuery.matches);
+    };
+
+    mediaQuery.addEventListener('change', handleChange);
+    return () => mediaQuery.removeEventListener('change', handleChange);
+  }, []);
 
   useEffect(() => {
     const root = window.document.documentElement;
-    root.classList.remove('light', 'dark');
 
-    if (theme === 'system') {
-      const systemTheme = window.matchMedia('(prefers-color-scheme: dark)').matches
-        ? 'dark'
-        : 'light';
-      root.classList.add(systemTheme);
-      return;
+    if (disableTransitionOnChange) {
+      root.classList.add('no-transitions');
+
+      // Force a reflow
+      window.getComputedStyle(root).getPropertyValue('opacity');
     }
 
-    root.classList.add(theme);
-  }, [theme]);
+    // Remove previous theme classes
+    root.classList.remove('light', 'dark');
+
+    // Set the data attribute for the theme if not using class
+    if (attribute !== 'class') {
+      root.removeAttribute(`data-${attribute}`);
+    }
+
+    if (theme === 'system' && enableSystem) {
+      const systemTheme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+
+      if (attribute === 'class') {
+        root.classList.add(systemTheme);
+      } else {
+        root.setAttribute(`data-${attribute}`, systemTheme);
+      }
+    } else {
+      if (attribute === 'class') {
+        root.classList.add(theme);
+      } else {
+        root.setAttribute(`data-${attribute}`, theme);
+      }
+    }
+
+    if (disableTransitionOnChange) {
+      // Remove the class after a delay to allow the transitions to be re-enabled
+      setTimeout(() => {
+        root.classList.remove('no-transitions');
+      }, 0);
+    }
+  }, [theme, disableTransitionOnChange, enableSystem, attribute]);
 
   // Listen for system theme changes
   useEffect(() => {
@@ -42,35 +113,52 @@ export function ThemeProvider({ children, defaultTheme = 'system' }: ThemeProvid
 
     const handleChange = () => {
       const root = window.document.documentElement;
-      root.classList.remove('light', 'dark');
-      root.classList.add(mediaQuery.matches ? 'dark' : 'light');
+
+      if (attribute === 'class') {
+        root.classList.remove('light', 'dark');
+        root.classList.add(mediaQuery.matches ? 'dark' : 'light');
+      } else {
+        root.setAttribute(`data-${attribute}`, mediaQuery.matches ? 'dark' : 'light');
+      }
     };
 
     mediaQuery.addEventListener('change', handleChange);
     return () => mediaQuery.removeEventListener('change', handleChange);
-  }, [theme]);
+  }, [theme, attribute]);
 
-  // Initialize from localStorage if available
+  // Apply reduced motion class when preference is detected
   useEffect(() => {
-    const storedTheme = localStorage.getItem('theme') as Theme | null;
-    if (storedTheme) {
-      setTheme(storedTheme);
+    const root = window.document.documentElement;
+
+    if (prefersReducedMotion) {
+      root.classList.add('reduce-motion');
+    } else {
+      root.classList.remove('reduce-motion');
     }
-  }, []);
+  }, [prefersReducedMotion]);
 
-  // Store theme preference in localStorage
-  useEffect(() => {
-    localStorage.setItem('theme', theme);
-  }, [theme]);
+  const value = {
+    theme,
+    setTheme: (theme: Theme) => {
+      localStorage.setItem(storageKey, theme);
+      setTheme(theme);
+    },
+    prefersReducedMotion,
+  };
 
-  const value = { theme, setTheme };
-  return <ThemeContext.Provider value={value}>{children}</ThemeContext.Provider>;
+  return (
+    <ThemeProviderContext.Provider {...props} value={value}>
+      {children}
+    </ThemeProviderContext.Provider>
+  );
 }
 
 export const useTheme = () => {
-  const context = useContext(ThemeContext);
+  const context = useContext(ThemeProviderContext);
+
   if (context === undefined) {
     throw new Error('useTheme must be used within a ThemeProvider');
   }
+
   return context;
 };

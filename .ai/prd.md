@@ -249,7 +249,8 @@ Each goal is associated with specific, measurable KPIs:
 
 2. **UI & Styling**
 
-   - Tailwind CSS 4
+   - Tailwind CSS
+   - Radix-ui
    - GSAP 3.12
    - Three.js 0.160.0
    - Framer Motion 11.x
@@ -425,7 +426,7 @@ Epic-1: Core Infrastructure & Developer Experience
 
 Epic-2: Design System & Component Architecture
 
-- Implement Tailwind CSS 4 with custom configuration
+- Implement Tailwind CSS with radix-ui custom theme
 - Create advanced component system with accessibility
 - Setup Storybook with interactive documentation
 - Implement theme system with color scheme generation

@@ -47,21 +47,21 @@ export function ThemeDemo() {
           <CardContent>
             <div className="grid grid-cols-2 gap-2">
               <div className="flex flex-col gap-2">
-                <div className="bg-primary h-10 rounded-md" aria-label="Primary color"></div>
-                <div className="bg-secondary h-10 rounded-md" aria-label="Secondary color"></div>
-                <div className="bg-accent h-10 rounded-md" aria-label="Accent color"></div>
-                <div className="bg-muted h-10 rounded-md" aria-label="Muted color"></div>
+                <div className="h-10 rounded-md bg-primary" aria-label="Primary color"></div>
+                <div className="h-10 rounded-md bg-secondary" aria-label="Secondary color"></div>
+                <div className="h-10 rounded-md bg-accent" aria-label="Accent color"></div>
+                <div className="h-10 rounded-md bg-muted" aria-label="Muted color"></div>
               </div>
               <div className="flex flex-col gap-2">
-                <div className="bg-destructive h-10 rounded-md" aria-label="Destructive color"></div>
-                <div className="bg-card h-10 rounded-md" aria-label="Card color"></div>
-                <div className="bg-popover h-10 rounded-md" aria-label="Popover color"></div>
-                <div className="bg-border h-10 rounded-md" aria-label="Border color"></div>
+                <div className="h-10 rounded-md bg-destructive" aria-label="Destructive color"></div>
+                <div className="h-10 rounded-md bg-card" aria-label="Card color"></div>
+                <div className="h-10 rounded-md bg-popover" aria-label="Popover color"></div>
+                <div className="h-10 rounded-md bg-border" aria-label="Border color"></div>
               </div>
             </div>
           </CardContent>
           <CardFooter>
-            <p className="text-muted-foreground text-sm">All colors meet WCAG 2.1 AA contrast requirements.</p>
+            <p className="text-sm text-muted-foreground">All colors meet WCAG 2.1 AA contrast requirements.</p>
           </CardFooter>
         </Card>
 
@@ -73,7 +73,7 @@ export function ThemeDemo() {
           <CardContent className="space-y-4">
             <div>
               <h3 className="mb-2 text-lg font-medium">Keyboard Navigation</h3>
-              <p className="text-muted-foreground mb-3 text-sm">
+              <p className="mb-3 text-sm text-muted-foreground">
                 Try navigating with the Tab key to see focus indicators.
               </p>
               <div className="flex flex-wrap gap-2">
@@ -84,13 +84,13 @@ export function ThemeDemo() {
             </div>
             <div>
               <h3 className="mb-2 text-lg font-medium">Reduced Motion</h3>
-              <p className="text-muted-foreground text-sm">
+              <p className="text-sm text-muted-foreground">
                 Animations are automatically disabled for users who prefer reduced motion.
               </p>
             </div>
           </CardContent>
           <CardFooter>
-            <p className="text-muted-foreground text-sm">All components meet WCAG 2.1 AA accessibility standards.</p>
+            <p className="text-sm text-muted-foreground">All components meet WCAG 2.1 AA accessibility standards.</p>
           </CardFooter>
         </Card>
       </div>

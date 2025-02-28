@@ -1,257 +1,192 @@
-# Story 1: Design System Foundation
+# Story 1: Tailwind CSS with Radix UI Custom Theme
 
 ## Status: in_progress
 
-## Epic: Design System & Component Architecture (Week 3-4)
+## Epic: Design System & Component Architecture (Epic-2)
 
 ## Description
 
-Implement the foundation of the design system using Tailwind CSS 4 with custom configuration, focusing on typography, color system, spacing, and responsive design. Create the base UI components that will form the building blocks of the portfolio website.
+Implement Tailwind CSS with Radix UI integration to create a custom theme system that supports both light and dark modes. Set up the foundation for the design system with proper color scales, typography, spacing, and other design tokens. Ensure the theme system is accessible and follows WCAG 2.1 AA standards.
 
 ## Tasks
 
-1. [ ] Configure Tailwind CSS 4 with custom theme
+1. [ ] Set up Tailwind CSS v3 with Next.js
 
-   - Set up custom color palette with P3 color support
-   - Configure typography system with responsive scaling
-   - Implement spacing and sizing system
-   - Create custom container queries configuration
-   - Set up animation and transition presets
+   - Install and configure Tailwind CSS v3
+   - Set up custom configuration
+   - Configure PostCSS plugins
+   - Create base styles and reset
 
-2. [ ] Create base UI components
+2. [ ] Integrate Radix UI with Tailwind
 
-   - Button component with variants
-   - Card component with variants
-   - Input and form components
-   - Navigation components
-   - Typography components (headings, paragraphs, etc.)
-   - Layout components (container, grid, etc.)
+   - Install Radix UI primitives
+   - Configure Radix UI theme variables
+   - Create integration layer between Tailwind and Radix
+   - Set up component styling patterns
 
-3. [ ] Implement theme system
+3. [ ] Implement Theme System
 
-   - Create theme provider with context
-   - Implement dark/light mode toggle
-   - Add system preference detection
-   - Create theme persistence with local storage
-   - Add theme transition animations
+   - Create light and dark mode themes
+   - Implement theme switching functionality
+   - Set up theme persistence
+   - Configure system preference detection
+   - Ensure smooth theme transitions
 
-4. [ ] Set up component documentation
+4. [ ] Define Design Tokens
 
-   - Create component documentation structure
-   - Add usage examples
-   - Document props and variants
-   - Include accessibility guidelines
-   - Add responsive behavior documentation
+   - Create color scales with proper contrast ratios
+   - Define typography system with responsive scales
+   - Set up spacing and sizing system
+   - Create animation and transition tokens
+   - Define border radiuses and shadows
+
+5. [ ] Implement Accessibility Features
+   - Ensure proper color contrast for all themes
+   - Set up focus styles and indicators
+   - Create skip links and keyboard navigation
+   - Implement reduced motion preferences
+   - Test with screen readers and assistive technologies
 
 ## Acceptance Criteria
 
-- Tailwind CSS 4 is properly configured with custom theme
-- Base UI components are implemented with proper variants
-- Theme system works with dark/light mode toggle
-- Components are responsive and accessible
-- Documentation is comprehensive and clear
-- All components pass accessibility tests
-- Components are properly typed with TypeScript
+- Tailwind CSS v3 is properly configured with Next.js
+- Radix UI primitives are integrated with Tailwind
+- Theme system supports light and dark modes with smooth transitions
+- Design tokens are properly defined and accessible
+- Theme switching works and persists user preferences
+- All components meet WCAG 2.1 AA standards
+- Documentation is created for the theme system
+- Theme system is responsive and works on all devices
 
 ## Technical Notes
 
 ### Tailwind Configuration
 
 ```typescript
-// Expected tailwind.config.ts
-import type { Config } from 'tailwindcss'
-import { fontFamily } from 'tailwindcss/defaultTheme'
+// Expected tailwind.config.js
+const { fontFamily } = require('tailwindcss/defaultTheme');
 
-export default {
+/** @type {import('tailwindcss').Config} */
+module.exports = {
   darkMode: 'class',
   content: ['./src/**/*.{js,ts,jsx,tsx}'],
   theme: {
     extend: {
       colors: {
+        // Custom color palette
         primary: {
-          50: 'oklch(98% 0.02 var(--primary-hue))',
-          100: 'oklch(96% 0.04 var(--primary-hue))',
-          200: 'oklch(92% 0.07 var(--primary-hue))',
-          300: 'oklch(85% 0.11 var(--primary-hue))',
-          400: 'oklch(78% 0.14 var(--primary-hue))',
-          500: 'oklch(70% 0.18 var(--primary-hue))',
-          600: 'oklch(60% 0.20 var(--primary-hue))',
-          700: 'oklch(50% 0.18 var(--primary-hue))',
-          800: 'oklch(40% 0.15 var(--primary-hue))',
-          900: 'oklch(30% 0.12 var(--primary-hue))',
-          950: 'oklch(20% 0.10 var(--primary-hue))',
+          50: 'hsl(var(--primary-50))',
+          100: 'hsl(var(--primary-100))',
+          // ... other shades
+          900: 'hsl(var(--primary-900))',
         },
-        // Additional color definitions
+        // ... other color categories
       },
       fontFamily: {
         sans: ['var(--font-sans)', ...fontFamily.sans],
         mono: ['var(--font-mono)', ...fontFamily.mono],
-        display: ['var(--font-display)', ...fontFamily.sans],
-      },
-      animation: {
-        'fade-in': 'fade-in 0.3s ease-in-out',
-        'slide-up': 'slide-up 0.4s ease-out',
-        'slide-down': 'slide-down 0.4s ease-out',
       },
       keyframes: {
-        'fade-in': {
-          '0%': { opacity: '0' },
-          '100%': { opacity: '1' },
-        },
-        'slide-up': {
-          '0%': { transform: 'translateY(10px)', opacity: '0' },
-          '100%': { transform: 'translateY(0)', opacity: '1' },
-        },
-        'slide-down': {
-          '0%': { transform: 'translateY(-10px)', opacity: '0' },
-          '100%': { transform: 'translateY(0)', opacity: '1' },
-        },
+        // Custom animations
       },
-      container: {
-        center: true,
-        padding: {
-          DEFAULT: '1rem',
-          sm: '2rem',
-          lg: '4rem',
-          xl: '5rem',
-          '2xl': '6rem',
-        },
+      animation: {
+        // Animation definitions
       },
     },
   },
   plugins: [
     require('@tailwindcss/typography'),
-    require('@tailwindcss/container-queries'),
-    require('@tailwindcss/forms'),
+    require('tailwindcss-animate'),
   ],
-} satisfies Config
+};
 ```
 
-### Theme Provider
+### Theme Provider Component
 
 ```tsx
-// Expected theme-provider.tsx
-'use client'
+// Expected ThemeProvider.tsx
+'use client';
 
-import { createContext, useContext, useEffect, useState } from 'react'
+import { createContext, useContext, useEffect, useState } from 'react';
 
-type Theme = 'dark' | 'light' | 'system'
+type Theme = 'light' | 'dark' | 'system';
 
 interface ThemeProviderProps {
-  children: React.ReactNode
-  defaultTheme?: Theme
+  children: React.ReactNode;
+  defaultTheme?: Theme;
 }
 
-interface ThemeContextValue {
-  theme: Theme
-  setTheme: (theme: Theme) => void
-}
-
-const ThemeContext = createContext<ThemeContextValue | undefined>(undefined)
+const ThemeContext = createContext<{
+  theme: Theme;
+  setTheme: (theme: Theme) => void;
+}>({
+  theme: 'system',
+  setTheme: () => null,
+});
 
 export function ThemeProvider({
   children,
   defaultTheme = 'system',
 }: ThemeProviderProps) {
-  const [theme, setTheme] = useState<Theme>(defaultTheme)
+  const [theme, setTheme] = useState<Theme>(defaultTheme);
 
   useEffect(() => {
-    const root = window.document.documentElement
-    root.classList.remove('light', 'dark')
+    // Implementation details
+  }, [theme]);
 
-    if (theme === 'system') {
-      const systemTheme = window.matchMedia('(prefers-color-scheme: dark)').matches
-        ? 'dark'
-        : 'light'
-      root.classList.add(systemTheme)
-      return
-    }
-
-    root.classList.add(theme)
-  }, [theme])
-
-  const value = { theme, setTheme }
-  return <ThemeContext.Provider value={value}>{children}</ThemeContext.Provider>
+  return (
+    <ThemeContext.Provider value={{ theme, setTheme }}>
+      {children}
+    </ThemeContext.Provider>
+  );
 }
 
-export const useTheme = () => {
-  const context = useContext(ThemeContext)
-  if (context === undefined) {
-    throw new Error('useTheme must be used within a ThemeProvider')
-  }
-  return context
-}
+export const useTheme = () => useContext(ThemeContext);
 ```
 
-## Implementation Notes
+## Implementation Plan
 
-### Task 1: Configure Tailwind CSS 4 with custom theme
+1. Set up Tailwind CSS v3 with Next.js
+   - Install dependencies
+   - Configure tailwind.config.js
+   - Set up PostCSS configuration
+   - Create global styles
 
-1. Update tailwind.config.ts with custom theme configuration
-2. Set up CSS variables for dynamic theme values
-3. Configure plugins for typography, forms, and container queries
-4. Create utility classes for animations and transitions
-5. Set up responsive design tokens
+2. Integrate Radix UI
+   - Install Radix UI primitives
+   - Create theme variables
+   - Set up component styling patterns
 
-### Task 2: Create base UI components
+3. Implement Theme System
+   - Create ThemeProvider component
+   - Implement theme switching
+   - Set up theme persistence
+   - Configure system preference detection
 
-1. Implement Button component with variants (primary, secondary, ghost, etc.)
-2. Create Card component with different styles and layouts
-3. Develop form components (Input, Select, Checkbox, etc.)
-4. Build navigation components (NavBar, Menu, etc.)
-5. Implement typography components with proper hierarchy
-6. Create layout components for responsive design
+4. Define Design Tokens
+   - Create CSS variables for tokens
+   - Set up color scales
+   - Define typography system
+   - Create spacing and sizing system
 
-### Task 3: Implement theme system
+5. Implement Accessibility Features
+   - Test color contrast
+   - Set up focus styles
+   - Implement reduced motion preferences
+   - Test with assistive technologies
 
-1. Create ThemeProvider component with context
-2. Implement useTheme hook for theme management
-3. Build ThemeToggle component for switching themes
-4. Add system preference detection and synchronization
-5. Implement theme persistence with localStorage
+## Test Plan
 
-### Task 4: Set up component documentation
-
-1. Create documentation structure for components
-2. Add usage examples and code snippets
-3. Document props, variants, and accessibility features
-4. Include responsive behavior documentation
-5. Add theme variation examples
-
-## Files to Create/Modify
-
-- src/styles/globals.css
-- tailwind.config.ts
-- src/components/ui/button.tsx
-- src/components/ui/card.tsx
-- src/components/ui/input.tsx
-- src/components/ui/select.tsx
-- src/components/ui/checkbox.tsx
-- src/components/ui/typography.tsx
-- src/components/ui/container.tsx
-- src/components/ui/grid.tsx
-- src/components/theme-provider.tsx
-- src/components/theme-toggle.tsx
-- src/hooks/use-theme.ts
-- docs/components/README.md
-- docs/components/button.md
-- docs/components/card.md
-- docs/components/form.md
-- docs/components/layout.md
-- docs/components/typography.md
-
-## Test Coverage Requirements
-
-- Component tests for all UI components
-- Theme provider tests
-- Accessibility tests for all components
-- Responsive behavior tests
-- Color contrast tests for theme variations
+- Unit tests for theme switching functionality
+- Component tests for theme provider
+- Visual regression tests for theme changes
+- Accessibility tests for color contrast
+- End-to-end tests for theme persistence
 
 ## Documentation Requirements
 
-- Component API documentation
-- Usage examples
-- Accessibility guidelines
-- Responsive behavior documentation
-- Theme variation examples
+- Create design system documentation
+- Document theme usage guidelines
+- Create component styling patterns guide
+- Document accessibility features
+- Create theme customization guide

@@ -13,7 +13,8 @@ This architecture defines a modern, performant, and accessible portfolio website
 | Next.js 15.1.7               | Latest React framework with App Router, React 19 support, and improved error debugging |
 | React 19                     | Latest stable React version with sibling pre-warming and enhanced performance          |
 | TypeScript                   | Type-safe JavaScript superset for improved developer experience                        |
-| Tailwind CSS 4               | Latest CSS-first framework with high-performance engine and modern CSS features        |
+| Tailwind CSS                 | CSS-first framework with high-performance engine and modern CSS features               |
+| Radix-ui                     | Low-level UI components for building complex, accessible, and performant interfaces    |
 | Contentful                   | Headless CMS for content management                                                    |
 | Jest & React Testing Library | Testing frameworks for unit and integration tests                                      |
 | Playwright                   | End-to-end testing, accessibility testing, and visual regression testing               |
