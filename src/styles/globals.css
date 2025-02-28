@@ -4,44 +4,54 @@
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+    /* Light theme (complementary to the dark theme) */
+    --background: 210 33% 98%; /* #f5f8fc - Light complementary to dark bg */
+    --foreground: 210 33% 20%; /* #2a3b4d - Dark text for light mode */
 
-    --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
+    --card: 210 33% 95%; /* #edf3f9 - Light card background */
+    --card-foreground: 210 33% 20%; /* #2a3b4d - Dark text for light mode */
 
-    --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
+    --header: 35 60% 35%; /* #9c6d3e - Complementary to dark header */
+    --header-foreground: 210 33% 98%; /* #f5f8fc - Light text for dark header */
 
-    --primary: 221.2 83.2% 53.3%;
-    --primary-foreground: 210 40% 98%;
-    --primary-50: 210 100% 98%;
-    --primary-100: 210 100% 95%;
-    --primary-200: 210 95% 90%;
-    --primary-300: 210 90% 80%;
-    --primary-400: 213 90% 70%;
-    --primary-500: 217 91% 60%;
-    --primary-600: 221.2 83.2% 53.3%;
-    --primary-700: 224 76% 48%;
-    --primary-800: 226 71% 40%;
-    --primary-900: 224 71% 35%;
-    --primary-950: 226 57% 21%;
+    --body: 210 20% 30%; /* #455a6b - Complementary to dark body text */
+    --body-foreground: 210 33% 98%; /* #f5f8fc - Light text for dark body */
 
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
+    --link: 174 75% 35%; /* #0d7a74 - Slightly darker version of dark link */
+    --link-hover: 174 75% 25%; /* #095651 - Darker version for hover */
 
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
+    --border: 210 33% 80%; /* #c5d4e3 - Light border */
 
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
+    --primary: 174 75% 35%; /* #0d7a74 - Same as link */
+    --primary-foreground: 210 33% 98%; /* #f5f8fc - Light text */
 
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
+    --secondary: 35 60% 35%; /* #9c6d3e - Same as header */
+    --secondary-foreground: 210 33% 98%; /* #f5f8fc - Light text */
 
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 221.2 83.2% 53.3%;
+    --muted: 210 33% 90%; /* #dae5f0 - Muted background */
+    --muted-foreground: 210 20% 40%; /* #5a7082 - Muted text */
+
+    --accent: 35 60% 90%; /* #f7e8d6 - Light accent */
+    --accent-foreground: 35 60% 35%; /* #9c6d3e - Dark text on accent */
+
+    --destructive: 0 70% 50%; /* #e63535 - Red for destructive actions */
+    --destructive-foreground: 210 33% 98%; /* #f5f8fc - Light text */
+
+    --popover: 210 33% 98%; /* #f5f8fc - Light popover background */
+    --popover-foreground: 210 33% 20%; /* #2a3b4d - Dark text */
+
+    /* Status colors - Light theme */
+    --success: 100 70% 35%; /* #5ab825 - Darker version of dark success */
+    --success-foreground: 0 0% 100%; /* #ffffff - White text */
+
+    --caution: 30 90% 45%; /* #d97a1e - Darker version of dark caution */
+    --caution-foreground: 0 0% 100%; /* #ffffff - White text */
+
+    --danger: 5 65% 45%; /* #c04840 - Darker version of dark danger */
+    --danger-foreground: 0 0% 100%; /* #ffffff - White text */
+
+    --info: 210 75% 40%; /* #2472c8 - Darker version of dark info */
+    --info-foreground: 0 0% 100%; /* #ffffff - White text */
 
     --radius: 0.5rem;
     --radius-3xl: 1.5rem;
@@ -56,44 +66,54 @@
   }
 
   .dark {
-    --background: 222.2 84% 4.9%;
-    --foreground: 210 40% 98%;
+    /* Dark theme with user's preferred colors */
+    --background: 210 45% 11%; /* #0a1a2b - User's dark bg */
+    --foreground: 210 15% 60%; /* #869ba9 - User's dark body text */
 
-    --card: 222.2 84% 4.9%;
-    --card-foreground: 210 40% 98%;
+    --card: 210 33% 14%; /* #112233 - User's dark card bg */
+    --card-foreground: 210 15% 60%; /* #869ba9 - User's dark body text */
 
-    --popover: 222.2 84% 4.9%;
-    --popover-foreground: 210 40% 98%;
+    --header: 35 60% 72%; /* #deb992 - User's dark header text */
+    --header-foreground: 210 45% 11%; /* #0a1a2b - Dark background */
 
-    --primary: 217 91% 60%;
-    --primary-foreground: 222.2 47.4% 11.2%;
-    --primary-50: 226 57% 21%;
-    --primary-100: 224 71% 35%;
-    --primary-200: 226 71% 40%;
-    --primary-300: 224 76% 48%;
-    --primary-400: 221.2 83.2% 53.3%;
-    --primary-500: 217 91% 60%;
-    --primary-600: 213 90% 70%;
-    --primary-700: 210 90% 80%;
-    --primary-800: 210 95% 90%;
-    --primary-900: 210 100% 95%;
-    --primary-950: 210 100% 98%;
+    --body: 210 15% 60%; /* #869ba9 - User's dark body text */
+    --body-foreground: 210 45% 11%; /* #0a1a2b - Dark background */
 
-    --secondary: 217.2 32.6% 17.5%;
-    --secondary-foreground: 210 40% 98%;
+    --link: 174 75% 45%; /* #1ba098 - User's dark link */
+    --link-hover: 174 75% 55%; /* #25c6bc - Lighter version for hover */
 
-    --muted: 217.2 32.6% 17.5%;
-    --muted-foreground: 215 20.2% 65.1%;
+    --border: 210 33% 18%; /* #1a2b3c - User's dark card border */
 
-    --accent: 217.2 32.6% 17.5%;
-    --accent-foreground: 210 40% 98%;
+    --primary: 174 75% 45%; /* #1ba098 - User's dark link */
+    --primary-foreground: 210 33% 98%; /* #f5f8fc - Light text */
 
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 40% 98%;
+    --secondary: 35 60% 72%; /* #deb992 - User's dark header text */
+    --secondary-foreground: 210 45% 11%; /* #0a1a2b - Dark background */
 
-    --border: 217.2 32.6% 17.5%;
-    --input: 217.2 32.6% 17.5%;
-    --ring: 224.3 76.3% 48%;
+    --muted: 210 33% 18%; /* #1a2b3c - User's dark card border */
+    --muted-foreground: 210 15% 50%; /* #6d8394 - Slightly dimmer than body text */
+
+    --accent: 35 60% 20%; /* #5a3f24 - Darker version of header color */
+    --accent-foreground: 35 60% 72%; /* #deb992 - User's dark header text */
+
+    --destructive: 0 70% 50%; /* #e63535 - Red for destructive actions */
+    --destructive-foreground: 210 33% 98%; /* #f5f8fc - Light text */
+
+    --popover: 210 33% 14%; /* #112233 - User's dark card bg */
+    --popover-foreground: 210 15% 60%; /* #869ba9 - User's dark body text */
+
+    /* Status colors - Dark theme (user specified) */
+    --success: 100 94% 57%; /* #7ff72c - User's dark success */
+    --success-foreground: 210 45% 11%; /* #0a1a2b - Dark background */
+
+    --caution: 30 97% 56%; /* #fc9324 - User's dark caution */
+    --caution-foreground: 210 45% 11%; /* #0a1a2b - Dark background */
+
+    --danger: 5 57% 60%; /* #db5c55 - User's dark danger */
+    --danger-foreground: 210 45% 11%; /* #0a1a2b - Dark background */
+
+    --info: 210 80% 55%; /* #2e8eec - User's dark info */
+    --info-foreground: 210 45% 11%; /* #0a1a2b - Dark background */
   }
 }
 
@@ -106,6 +126,22 @@
     font-feature-settings:
       'rlig' 1,
       'calt' 1;
+  }
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply text-header;
+  }
+  p,
+  span,
+  div {
+    @apply text-body;
+  }
+  a {
+    @apply text-link hover:text-link-hover;
   }
 }
 

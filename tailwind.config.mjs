@@ -17,10 +17,22 @@ export default {
     extend: {
       colors: {
         border: 'hsl(var(--border))',
-        input: 'hsl(var(--input))',
-        ring: 'hsl(var(--ring))',
+        input: 'hsl(var(--border))',
+        ring: 'hsl(var(--primary))',
         background: 'hsl(var(--background))',
         foreground: 'hsl(var(--foreground))',
+        header: {
+          DEFAULT: 'hsl(var(--header))',
+          foreground: 'hsl(var(--header-foreground))',
+        },
+        body: {
+          DEFAULT: 'hsl(var(--body))',
+          foreground: 'hsl(var(--body-foreground))',
+        },
+        link: {
+          DEFAULT: 'hsl(var(--link))',
+          hover: 'hsl(var(--link-hover))',
+        },
         primary: {
           DEFAULT: 'hsl(var(--primary))',
           foreground: 'hsl(var(--primary-foreground))',
@@ -40,10 +52,6 @@ export default {
           DEFAULT: 'hsl(var(--secondary))',
           foreground: 'hsl(var(--secondary-foreground))',
         },
-        destructive: {
-          DEFAULT: 'hsl(var(--destructive))',
-          foreground: 'hsl(var(--destructive-foreground))',
-        },
         muted: {
           DEFAULT: 'hsl(var(--muted))',
           foreground: 'hsl(var(--muted-foreground))',
@@ -52,13 +60,33 @@ export default {
           DEFAULT: 'hsl(var(--accent))',
           foreground: 'hsl(var(--accent-foreground))',
         },
-        popover: {
-          DEFAULT: 'hsl(var(--popover))',
-          foreground: 'hsl(var(--popover-foreground))',
+        destructive: {
+          DEFAULT: 'hsl(var(--destructive))',
+          foreground: 'hsl(var(--destructive-foreground))',
         },
         card: {
           DEFAULT: 'hsl(var(--card))',
           foreground: 'hsl(var(--card-foreground))',
+        },
+        popover: {
+          DEFAULT: 'hsl(var(--popover))',
+          foreground: 'hsl(var(--popover-foreground))',
+        },
+        success: {
+          DEFAULT: 'hsl(var(--success))',
+          foreground: 'hsl(var(--success-foreground))',
+        },
+        caution: {
+          DEFAULT: 'hsl(var(--caution))',
+          foreground: 'hsl(var(--caution-foreground))',
+        },
+        danger: {
+          DEFAULT: 'hsl(var(--danger))',
+          foreground: 'hsl(var(--danger-foreground))',
+        },
+        info: {
+          DEFAULT: 'hsl(var(--info))',
+          foreground: 'hsl(var(--info-foreground))',
         },
       },
       borderRadius: {

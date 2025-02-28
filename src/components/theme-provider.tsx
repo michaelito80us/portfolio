@@ -3,15 +3,12 @@
 import * as React from 'react';
 import { createContext, useContext, useEffect, useState } from 'react';
 
-type Theme = 'light' | 'dark' | 'system';
+type Theme = 'light' | 'dark';
 
 interface ThemeProviderProps {
   children: React.ReactNode;
   defaultTheme?: Theme;
   storageKey?: string;
-  attribute?: string;
-  enableSystem?: boolean;
-  disableTransitionOnChange?: boolean;
 }
 
 interface ThemeProviderState {
@@ -21,133 +18,54 @@ interface ThemeProviderState {
 }
 
 const initialState: ThemeProviderState = {
-  theme: 'system',
+  theme: 'dark',
   setTheme: () => null,
   prefersReducedMotion: false,
 };
 
 const ThemeProviderContext = createContext<ThemeProviderState>(initialState);
 
-export function ThemeProvider({
-  children,
-  defaultTheme = 'system',
-  storageKey = 'theme',
-  attribute = 'class',
-  enableSystem = true,
-  disableTransitionOnChange = false,
-  ...props
-}: ThemeProviderProps) {
+export function ThemeProvider({ children, defaultTheme = 'dark', storageKey = 'theme', ...props }: ThemeProviderProps) {
   const [theme, setTheme] = useState<Theme>(defaultTheme);
   const [prefersReducedMotion, setPrefersReducedMotion] = useState<boolean>(false);
 
   useEffect(() => {
-    const savedTheme = localStorage.getItem(storageKey) as Theme | null;
-
-    if (savedTheme) {
+    const savedTheme = localStorage.getItem(storageKey);
+    if (savedTheme && (savedTheme === 'light' || savedTheme === 'dark')) {
       setTheme(savedTheme);
-    } else if (defaultTheme !== 'system') {
-      setTheme(defaultTheme);
+    } else {
+      setTheme('dark'); // Default to dark theme
     }
-  }, [defaultTheme, storageKey]);
 
-  // Check for reduced motion preference
-  useEffect(() => {
+    // Check for reduced motion preference
     const mediaQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
     setPrefersReducedMotion(mediaQuery.matches);
 
-    const handleChange = () => {
-      setPrefersReducedMotion(mediaQuery.matches);
+    const handleMotionChange = (e: MediaQueryListEvent) => {
+      setPrefersReducedMotion(e.matches);
     };
 
-    mediaQuery.addEventListener('change', handleChange);
-    return () => mediaQuery.removeEventListener('change', handleChange);
-  }, []);
+    mediaQuery.addEventListener('change', handleMotionChange);
+    return () => mediaQuery.removeEventListener('change', handleMotionChange);
+  }, [storageKey]);
 
   useEffect(() => {
     const root = window.document.documentElement;
 
-    if (disableTransitionOnChange) {
-      root.classList.add('no-transitions');
-
-      // Force a reflow
-      window.getComputedStyle(root).getPropertyValue('opacity');
-    }
-
-    // Remove previous theme classes
     root.classList.remove('light', 'dark');
+    root.classList.add(theme);
 
-    // Set the data attribute for the theme if not using class
-    if (attribute !== 'class') {
-      root.removeAttribute(`data-${attribute}`);
-    }
-
-    if (theme === 'system' && enableSystem) {
-      const systemTheme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
-
-      if (attribute === 'class') {
-        root.classList.add(systemTheme);
-      } else {
-        root.setAttribute(`data-${attribute}`, systemTheme);
-      }
-    } else {
-      if (attribute === 'class') {
-        root.classList.add(theme);
-      } else {
-        root.setAttribute(`data-${attribute}`, theme);
-      }
-    }
-
-    if (disableTransitionOnChange) {
-      // Remove the class after a delay to allow the transitions to be re-enabled
-      setTimeout(() => {
-        root.classList.remove('no-transitions');
-      }, 0);
-    }
-  }, [theme, disableTransitionOnChange, enableSystem, attribute]);
-
-  // Listen for system theme changes
-  useEffect(() => {
-    if (theme !== 'system') return;
-
-    const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
-
-    const handleChange = () => {
-      const root = window.document.documentElement;
-
-      if (attribute === 'class') {
-        root.classList.remove('light', 'dark');
-        root.classList.add(mediaQuery.matches ? 'dark' : 'light');
-      } else {
-        root.setAttribute(`data-${attribute}`, mediaQuery.matches ? 'dark' : 'light');
-      }
-    };
-
-    mediaQuery.addEventListener('change', handleChange);
-    return () => mediaQuery.removeEventListener('change', handleChange);
-  }, [theme, attribute]);
-
-  // Apply reduced motion class when preference is detected
-  useEffect(() => {
-    const root = window.document.documentElement;
-
-    if (prefersReducedMotion) {
-      root.classList.add('reduce-motion');
-    } else {
-      root.classList.remove('reduce-motion');
-    }
-  }, [prefersReducedMotion]);
+    localStorage.setItem(storageKey, theme);
+  }, [theme, storageKey]);
 
   const value = {
     theme,
-    setTheme: (theme: Theme) => {
-      localStorage.setItem(storageKey, theme);
-      setTheme(theme);
-    },
+    setTheme,
     prefersReducedMotion,
   };
 
   return (
-    <ThemeProviderContext.Provider {...props} value={value}>
+    <ThemeProviderContext.Provider value={value} {...props}>
       {children}
     </ThemeProviderContext.Provider>
   );
@@ -155,10 +73,8 @@ export function ThemeProvider({
 
 export const useTheme = () => {
   const context = useContext(ThemeProviderContext);
-
   if (context === undefined) {
     throw new Error('useTheme must be used within a ThemeProvider');
   }
-
   return context;
 };
