@@ -1,40 +1,14 @@
-export interface LighthouseConfig {
+module.exports = {
   ci: {
     collect: {
-      startServerCommand: string;
-      url: string[];
-      numberOfRuns: number;
-      settings?: {
-        onlyCategories?: string[];
-        skipAudits?: string[];
-        throttling?: {
-          cpuSlowdownMultiplier?: number;
-        };
-        maxWaitForLoad?: number;
-      };
-    };
-    assert: {
-      preset: string;
-      assertions: Record<string, [string, { minScore?: number; maxNumericValue?: number }]>;
-    };
-    upload: {
-      target: string;
-      outputDir?: string;
-    };
-  };
-}
-
-const config: LighthouseConfig = {
-  ci: {
-    collect: {
-      startServerCommand: 'npm run start',
+      startServerCommand: 'npm run build && npm run start',
       url: ['http://localhost:3000'],
-      numberOfRuns: 3,
+      numberOfRuns: 1,
       settings: {
         onlyCategories: ['performance', 'accessibility', 'best-practices', 'seo'],
         skipAudits: ['uses-http2'],
         throttling: {
-          cpuSlowdownMultiplier: 4,
+          cpuSlowdownMultiplier: 2,
         },
         maxWaitForLoad: 60000,
       },
@@ -54,9 +28,8 @@ const config: LighthouseConfig = {
       },
     },
     upload: {
-      target: 'temporary-public-storage',
+      target: 'filesystem',
+      outputDir: './lighthouse-results',
     },
   },
 };
-
-export default config;

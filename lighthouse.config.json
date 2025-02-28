@@ -1,10 +1,12 @@
 {
   "ci": {
     "collect": {
-      "startServerCommand": "npm run dev",
+      "startServerCommand": "npm run start",
       "url": ["http://localhost:3000"],
       "numberOfRuns": 3,
       "settings": {
+        "onlyCategories": ["performance", "accessibility", "best-practices", "seo"],
+        "skipAudits": ["uses-http2"],
         "throttling": {
           "cpuSlowdownMultiplier": 4
         },

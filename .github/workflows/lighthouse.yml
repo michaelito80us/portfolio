@@ -18,9 +18,46 @@ jobs:
         run: npm run build
 
       - name: Run Lighthouse CI
+        id: lighthouse
         uses: treosh/lighthouse-ci-action@v10
         with:
           configPath: './lighthouse.config.json'
           uploadArtifacts: true
           temporaryPublicStorage: true
           runs: 3
+
+      - name: Format lighthouse score
+        id: format_lighthouse_score
+        if: always()
+        uses: actions/github-script@v6
+        with:
+          script: |
+            const result = ${{ steps.lighthouse.outputs.manifest }}
+            const links = ${{ steps.lighthouse.outputs.links }}
+
+            if (!result) {
+              core.setFailed('No Lighthouse results found')
+              return
+            }
+
+            const score = Object.values(result)[0].summary
+            const scoreEmoji = {
+              performance: score.performance >= 0.9 ? '🟢' : score.performance >= 0.5 ? '🟠' : '🔴',
+              accessibility: score.accessibility >= 0.9 ? '🟢' : score.accessibility >= 0.5 ? '🟠' : '🔴',
+              'best-practices': score['best-practices'] >= 0.9 ? '🟢' : score['best-practices'] >= 0.5 ? '🟠' : '🔴',
+              seo: score.seo >= 0.9 ? '🟢' : score.seo >= 0.5 ? '🟠' : '🔴',
+            }
+
+            const comment = `## 🚦 Lighthouse Report
+
+            | Category | Score | Result |
+            | --- | --- | --- |
+            | Performance | ${Math.round(score.performance * 100)} | ${scoreEmoji.performance} |
+            | Accessibility | ${Math.round(score.accessibility * 100)} | ${scoreEmoji.accessibility} |
+            | Best practices | ${Math.round(score['best-practices'] * 100)} | ${scoreEmoji['best-practices']} |
+            | SEO | ${Math.round(score.seo * 100)} | ${scoreEmoji.seo} |
+
+            ${Object.values(links)[0].map(link => `[Detailed report](${link})`).join('\n')}
+            `
+
+            core.setOutput('comment', comment)
